@@ -1,0 +1,79 @@
+\documentclass[]{article}
+\usepackage{amsmath}
+\usepackage{bm}
+\usepackage{amssymb}
+\usepackage{listings}
+\usepackage{mathtools}
+\usepackage{siunitx}
+
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+\lstset{columns=fullflexible,
+	mathescape=true,
+	numbers=left,
+	stepnumber=1,
+	literate=
+	{=}{$\leftarrow{}$}{1},
+	morekeywords={se,entao,para,devolva,continua},
+	xleftmargin=5.0ex
+}
+
+\newcommand{\floatRepr}[3]{\fbox{ #1 }\fbox{ \num[group-minimum-digits = 50, minimum-integer-digits = 8]{#2} }\fbox{ \num[group-minimum-digits = 50,minimum-integer-digits = 23]{#3} }}
+
+\newcommand{\doubleRepr}[3]{\fbox{ #1 }\fbox{ \num[group-minimum-digits = 50, minimum-integer-digits = 11]{#2} }\fbox{ \num[group-minimum-digits = 60,minimum-integer-digits = 52]{#3} }}
+
+\title{\vspace{-4.0cm}MAC0300 - Lista 2}
+\author{Matheus T. de Laurentys, 9793714}
+
+\begin{document}
+	\maketitle
+	\noindent
+	\textbf{PROMPT: } Exercises 6.4, 6.10 e 7.5 from IEEE (Overton) book.
+	
+	\noindent
+	\textbf{6.4}\\
+	\noindent If using float-point precision:\\
+	
+	$1 \times 2^{-24} = $ \floatRepr{0}{01100111}{0}
+	
+	\noindent If using double-point precision:\\
+	
+	$1 \times 2^{-53} = $ \doubleRepr{0}{01111001010}{0}\\
+	
+	\noindent
+	\textbf{6.10}\\
+	Correctly rounded:\\
+	
+	Result $=$ \floatRepr{0}{01111111}{1}\\
+	
+	One guard bits:\\
+	Result $= 1$. One guard bit is not enough as, after shifting 24 places to the right, the second term would be filled with zeros with a single one on the guard bit. If rounding up, the result would be correct.\\
+	
+	Two guard bits:\\
+	Result $= 1$. Again, two guard bits are not enough as, after shifting 24 places to the right, the second term would be filled with zeros with a single one on the first guard bit and another zero on the second guard bit. If rounding up, the result would be correct.\\
+	
+	Two guard + 1 sticky bits:\\
+	Result $=$ \floatRepr{0}{01111111}{1}. The number will be correctly rounded.
+	
+	\noindent
+	\textbf{7.5}\\
+	
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
