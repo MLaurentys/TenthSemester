@@ -96,10 +96,6 @@ void matrixvector2 (int n, int m, const vector<double>& A,
 void matrixmatrix1 (int n, int m, int p, const vector<double>& A,
                     const vector<double>& X, vector<double>& B)
 {
-    B.resize(n * p);
-    for (int i = 0; i < n; ++i)
-        for (int j = 0; j < p; ++j)
-            B[i * p + j] = 0.0;
     for (int i = 0; i < n; ++i)
         for (int k = 0; k < m; ++k)
             for (int j = 0; j < p; ++j)
@@ -110,10 +106,6 @@ void matrixmatrix1 (int n, int m, int p, const vector<double>& A,
 void matrixmatrix2 (int n, int m, int p, const vector<double>& A,
                     const vector<double>& X, vector<double>& B)
 {
-    B.resize(n * p);
-    for (int i = 0; i < n; ++i)
-        for (int j = 0; j < p; ++j)
-            B[i * p + j] = 0.0;
     for (int i = 0; i < n; ++i)
         for (int j = 0; j < p; ++j)
             for (int k = 0; k < m; ++k)
@@ -132,6 +124,14 @@ void read_mat (int n, int m, vector<double>& mat)
     mat.resize(n * m);
     for (int i = 0; i < n * m; ++i)
         cin >> mat[i];
+}
+
+void init_mat (int n, int m, vector<double>& mat)
+{
+    mat.resize(n * m);
+    for (int i = 0; i < n; ++i)
+        for (int j = 0; j < m; ++j)
+            mat[i * m + j] = 0.0;
 }
 
 int main ()
@@ -199,6 +199,7 @@ int main ()
         read_mat(n, m, a);
         read_mat(m, p, x);
         read_mat(n, p, answ);
+        init_mat(n, p, result);
         differences = 0.0;
         t.reset();
         matrixmatrix1(n, m, p, a, x, result);
@@ -207,12 +208,13 @@ int main ()
             differences += std::fabs(answ[i] - result[i]);
         printf(" ONE   | %d | %d | %d | %lf     | %lf\n", n, m, p, differences, time);
         differences = 0.0;
+        init_mat(n, p, result);
         t.reset();
         matrixmatrix2(n, m, p, a, x, result);
         time = t.elapsed();
         for (int i = 0; i < n; ++i)
             differences += std::fabs(answ[i] - result[i]);
-        printf(" TWO   | %d | %d | %d |  %lf     | %lf\n", n, m, p, differences, time);
+        printf(" TWO   | %d | %d | %d | %lf     | %lf\n", n, m, p, differences, time);
     }
 
     return 0;

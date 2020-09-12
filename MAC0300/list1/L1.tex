@@ -1,0 +1,105 @@
+\documentclass[]{article}
+\usepackage{amsmath}
+\usepackage{bm}
+\usepackage{amssymb}
+\usepackage{listings}
+\usepackage{mathtools}
+\usepackage{siunitx}
+
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+\lstset{columns=fullflexible,
+	mathescape=true,
+	numbers=left,
+	stepnumber=1,
+	literate=
+	{=}{$\leftarrow{}$}{1},
+	morekeywords={se,entao,para,devolva,continua},
+	xleftmargin=5.0ex
+}
+
+\newcommand{\binRepr}[3]{\fbox{ #1 }\fbox{ \num[group-minimum-digits = 50, minimum-integer-digits = 8]{#2} }\fbox{ \num[group-minimum-digits = 50,minimum-integer-digits = 23]{#3} }}
+
+\title{\vspace{-4.0cm}MAC0300 - Lista 1}
+\author{Matheus T. de Laurentys, 9793714}
+
+\begin{document}
+	\maketitle
+	\noindent
+	\textbf{PROMPT: } Exercises 4.1, 5.1, 5.8 from IEEE (Overton) book.
+	
+	\noindent
+	\textbf{4.1} Give the single precision float representation of the following numbers: $2, 30, 31, 32, 33, 23/4, (23/4)\times 2^{100}, (23/4)\times 2^{-100}, (23/4)\times 2^{-135}, 1/5, 1024/5, \mathmbox{(1/10)\times 2^{-140}}$
+	
+	(2) $\longrightarrow$ \binRepr{0}{10000000}{0}\\
+	
+	(30) $\longrightarrow$ \binRepr{0}{10000011}{11100000000000000000000}\\
+	
+	(31) $\longrightarrow$ \binRepr{0}{10000011}{11110000000000000000000}\\
+	
+	(32) $\longrightarrow$ \binRepr{0}{10000100}{00000000000000000000000}\\
+	
+	(33) $\longrightarrow$ \binRepr{0}{10000100}{00001000000000000000000}\\
+	
+	(23/4) $\longrightarrow$ \binRepr{0}{10000001}{01110000000000000000000}\\
+	
+	($(23/4)\times 2^{100}$) $\longrightarrow$ \binRepr{0}{11100101}{01110000000000000000000}\\
+	
+	($(23/4)\times 2^{-100}$) $\longrightarrow$ \binRepr{0}{00011101}{01110000000000000000000}\\
+	
+	($(23/4)\times 2^{-135}$) = $(1.4375 \times 2^{-7}) \times 2^{-126}$ $\longrightarrow$\binRepr{0}{0}{10111000000000000}\\
+	
+	($1/5 = 1/8 \times 8/5$) $\longrightarrow$ \binRepr{0}{1111100}{10011001100110011001101}\\
+	
+	($1024/5$) $\longrightarrow$ \binRepr{0}{10000110}{10011001100110011001101}\\
+	
+	($(1/10)\times 2^{100}$) $\longrightarrow$ \binRepr{0}{11011111}{10011001100110011001101}\\
+	
+	
+	\noindent
+	\textbf{5.1} Give the rounded values of 1/10, using each of the rounding modes? What are they for ($1+2^{-25}$) and $2^{130}$.
+	
+	(1/10):\\
+	Round Down: \binRepr{0}{01111011}{10011001100110011001110}\\
+	Round Up: \binRepr{0}{01111011}{10011001100110011001101}\\
+	Round Towards Zero: \binRepr{0}{01111011}{10011001100110011001110}\\
+	Round to Nearest: \binRepr{0}{01111011}{10011001100110011001101}\\
+	
+	($1+2^{-25}$)\\
+	Round Down: \binRepr{0}{1111111}{0}\\
+	Round Up: \binRepr{0}{1111111}{1}\\
+	Round Towards Zero: \binRepr{0}{1111111}{0}\\
+	Round to Nearest: \binRepr{0}{1111111}{0}\\
+	
+	\pagebreak
+	($2^{130}$)\\
+	Round Down: \binRepr{0}{11111110}{11111111111111111111111}\\
+	Round Up: \binRepr{0}{11111111}{0}\\
+	Round Towards Zero: \binRepr{0}{11111110}{11111111111111111111111}\\
+	Round to Nearest: \binRepr{0}{11111111}{0}\\
+	
+	\noindent \textbf{5.8} Do bounds (5.10) and (5.11) hold when $|x| < N_{min}$?\\
+	
+	No, the relative rounding error bounds do not hold, but as seen in exercise 5.7, the absolute rounding error bound holds.
+	
+	For example, let $0 < x < (2^{-23} \times 2^{-126})$.
+	In this case, either round(x) = 0, or round(x) = $2^{-23} \times 2^{-126}$. In either case it is easy to verify that the rounding error is greater than $\epsilon$ since the round to nearest error can be up to $2^{-24} \times 2^{-126}$ and, in this case, the relerr is $\frac{1}{2}$.
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
