@@ -1,0 +1,79 @@
+\documentclass[]{article}
+\usepackage{amsmath}
+\usepackage{bm}
+\usepackage{amssymb}
+\usepackage{listings}
+\usepackage{mathtools}
+\usepackage{siunitx}
+\usepackage{adjustbox}
+\usepackage{setspace}
+
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+\lstset{columns=fullflexible,
+	mathescape=true,
+	numbers=left,
+	stepnumber=1,
+	literate=
+	{=}{$\leftarrow{}$}{1},
+	morekeywords={se,entao,para,devolva,continua},
+	xleftmargin=5.0ex
+}
+
+\newcommand{\binRepr}[3]{\fbox{ #1 }\fbox{ \num[group-minimum-digits = 50, minimum-integer-digits = 8]{#2} }\fbox{ \num[group-minimum-digits = 50,minimum-integer-digits = 23]{#3} }}
+\newcommand{\marginVBox}[1]{\adjustbox{margin*=1cm 0cm 0cm 0cm}{\vbox{\setstretch{1.6}#1}}}
+
+\title{\vspace{-4.0cm}MAT0206 - Lista 1}
+\author{Matheus T. de Laurentys, 9793714}
+
+\begin{document}
+	
+	\maketitle
+	
+	\noindent \textbf{1.} $A \subseteq B \iff A \cap B = A \iff A \cup B = B$\\
+	
+	Proving that: $A \subseteq B \implies A \cap B = A$:\\
+	
+	\marginVBox {
+		\noindent $(x \in A \cap B \rightarrow x \in A) \rightarrow A \cap B \subseteq A$ \\
+		$A \subseteq B \rightarrow (x \in A \rightarrow x \in B) \rightarrow A \subseteq A \cap B$ \\
+		$(A \cap B \subseteq A) \land (A \subseteq A \cap B) \rightarrow A = A \cap B$
+	}\\
+
+	Proving that: $A \cap B = A \implies A \subseteq B$:\\
+	
+	\marginVBox {
+		\noindent $A \cap B = A \rightarrow (x \in A \rightarrow x \in A \cap B \rightarrow x \in B) \rightarrow A \subseteq B$
+	}\\
+
+	Proving that: $A \cap B = A \implies A \cup B = B$:\\
+	
+	\marginVBox{
+		\noindent 
+	}
+	\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
