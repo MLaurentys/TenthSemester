@@ -1,2 +1,5 @@
 .vscode
 a.out
+*.aux
+*.log
+*.synctex.gz
