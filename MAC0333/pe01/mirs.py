@@ -3,36 +3,38 @@ import pickle
 import os
 import re
 
-CHARSET = -1
+CHARSET = 0
 LISTFILES = CHARSET + 1
 INDEX = CHARSET + 2
 ENCODINGS = CHARSET + 3
 
 
-# Enforces required command-line options
+# Lists relevant or required command-line options
 argparser = argparse.ArgumentParser()
-
 argparser.add_argument("dir", type=str, help=(
-    "Path to parent directory that keep the pickle file"))
+    "Caminho de diretorio com dados serializados"))
 argparser.add_argument('-v', '--verbose', dest='verbose', action='store_const',
-    const=True, default=False, help='Makes the program print debug information')
+    const=True, default=False, help='Controla impressao de informacoes para debug')
 argparser.add_argument('-t', '--topo', dest='topo', type=int,
-    help='Output most frequent \'TOPO\' tokens')
+    help='Imprime os \'TOPO\' tokens mais frequentes')
 argparser.add_argument('-r', '--regex', dest='regex',
-    help='Only print TOKEN results matching pattern')
+    help='Imprime apenas TOKENS que sigam o padrao')
 argparser.add_argument('-R', '--regexneg', dest='regexneg',
-    help='Only print TOKEN results NOT matching pattern')
-argparser.add_argument('-l','--list', nargs='*', dest="queryTokens",
-    help='List of tokens to query')
+    help='Imprime apenas TOKENS que NAO sigam o padrao')
+argparser.add_argument('queryTokens', nargs='*', default=[],
+    help='Lista de termos da consulta conjuntiva' )
 
+# Reads serialized file
 def loadData (parentFolder):
-    f =  open(parentFolder + '/mir.pickle', 'rb')
+    pkFile = parentFolder + '/mir.pickle'
+    f =  open(pkFile, 'rb')
     w = pickle.load(f)
     f.close()
-    print(f"Pickle Information:\n{len(w[LISTFILES])} documents\n"
-          f"{len(w[INDEX])} tokens\n")
+    print(f"{w[CHARSET]} de {pkFile}\nPickle Information:"\
+          f"\n{len(w[LISTFILES])} documents\n{len(w[INDEX])} tokens\n")
     return w
 
+# Handles -t option
 def PrintTopo(index, num, match=None, negMatch=None):
     def compareValue (item): return len(index[item])
     def compareValue2 (item): return str(item)
@@ -45,27 +47,38 @@ def PrintTopo(index, num, match=None, negMatch=None):
         regex = re.compile(negMatch)
         keys = [k for k in keys if not regex.match(k)]
     print(f"{len(keys)} tokens matched regex restrictions")
-    print(" DF |  Token  | List")
+    print(" DF |    Token    | Lista de incidencia")
     for i in range (len(keys)-1, len(keys)-num-1, -1):
-        print(f" {len(index[keys[i]])} | {keys[i]} {index[keys[i]]}\n")
+        print(f" {len(index[keys[i]]):{2}} | {keys[i]:{11}} | {index[keys[i]]}")
+    print()
 
+# Handles SELECT query
 def PrintSelect(tokens, index, files):
-    sets = [set([ind for ind in index[token]]) for token in tokens]
+    print("Conjugaçao das listas de termos")
+    sets = []
+    print(" DF |    Token    | Lista de incidencia")
+    for token in tokens:
+        if token not in index.keys():
+            print(f" -- | {token:{11}} | -----")
+            sets.append(set())
+        else:
+            print(f" {len(index[token]):{2}} | {token:{11}} | {index[token]}")
+            sets.append(set([ind for ind in index[token]]))
     res = sets[0]
     for st in sets:
         res = res.intersection(st)
     print(f"Existem {len(res)} documentos com os {len(tokens)} termos:")
-    [print(f"{doc}: {files[doc]}") for doc in res]
+    for doc in res: print(f"{doc}: {files[doc]}")
 
 
-def mirs ():
-    args = argparser.parse_args()
-    parentFolder = args.dir
+def mirs (args):
+    parentFolder = args.dir[-1] if args.dir[-1] == '/' else args.dir + '/'
     filesInfo = loadData(parentFolder)
     if args.topo is not None:
         PrintTopo(filesInfo[INDEX], args.topo, args.regex, args.regexneg)
-    if args.queryTokens is not None:
+    if args.queryTokens != []:
         PrintSelect(args.queryTokens, filesInfo[INDEX], filesInfo[LISTFILES])
 
 if __name__ == "__main__":
-    mirs()
+    args = argparser.parse_args()
+    mirs(args)
