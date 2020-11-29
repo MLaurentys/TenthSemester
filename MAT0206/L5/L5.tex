@@ -1,0 +1,80 @@
+\documentclass[12pt,twoside]{article}
+\usepackage[a4paper,width=150mm,headheight=110pt,top=25mm,bottom=25mm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+
+\title{MAT0206 - Lista 5 (complemento)}
+\author{Matheus T. de Laurentys, 9793714}
+
+\newcommand{\acc}{acumulação}
+\newcommand{\defi}{definição}
+\newcommand{\adh}{aderência}
+\newcommand{\n}{não }
+\newcommand{\ent}{então }
+\newcommand{\Ent}{Então }
+\newcommand{\eh}{é }
+\newcommand{\seq}{sequência}
+\newcommand{\num}{número}
+\newcommand{\sao}{são }
+\newcommand{\tambem}{também }
+\newcommand{\cont}{contínua}
+\newcommand{\contradicao}{contradição}
+\newcommand{\vizin}{vizinhança }
+
+\newcommand{\limi}[2]{$\displaystyle{\lim_{n \to +\infty}}(#1)=#2$}
+\newcommand{\f}{\mkern-2mu f\mkern-3mu}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\seqi}[1]{$(#1_n)_{n\in\N}$}
+
+\begin{document}
+	\maketitle
+		
+	\noindent\textbf{Q.1:}
+	
+	\noindent\textbf{b)}
+	
+	
+	[Por \contradicao] Tome \seqi{a}, sub\seq\ de \seqi{x}, que coverge pra $\beta$.
+	
+	Tome $\epsilon = \beta - A$. Como $\exists k\in\N | \forall i \ge k, |a_i - \beta| < \epsilon$, \ent
+	$$
+	\forall i \ge k,\;\; \beta -\epsilon < a_i < \beta + \epsilon \Rightarrow \beta - \beta + A < a_i \Rightarrow A < a_i
+	$$
+	Sendo assim, tem-se que $\forall k \in N, \exists i \ge k\;|\;x_i > A$ com $x_i \in$ \seqi{x}. Se esse fosse o caso, $\forall j \in \N$, se $X_j = (x_j, x_{j+1}, \ldots)$, \ent sup$X_j > A$. Isso contradiz o fato de $A = inf\{supX_j, j\in\N\}$. Logo, $\beta$ \n \eh valor de \adh.\\
+	
+	
+	\noindent\textbf{Q.2:}
+	
+	\noindent\textbf{b)} limsup\seqi{-x} = $-a$
+	
+	Como visto em aula, limsup $x_n$ \eh\ o maior limite de qualquer sub\seq\ convergente de $(x_n)_{n\in\N}$ e liminf $x_n$ \eh o menor desses limites.
+	
+	Considere a \seq\ $(a, \ldots, A)$, de pontos que \sao limites de sub\seq s de $(x_n)_{n\in\mathbb{N}}$,  ordenada de maneira \n crescente.
+	
+	Se $x\in\mathbb{R}$ \eh limite de sub\seq\ de $(x_n)$, \ent $-x$ \eh limite de \seq\ de $(-x_n)$. Se $x\in\mathbb{R}$ \eh limite de sub\seq\ de $(-x_n)$, \ent $-x$ \eh limite de \seq\ de $(x_n)$
+	
+	\noindent [Prova] Tome $(z_n)_{n\in\mathbb{N}}$ sub\seq\ de $(x_n)_{n\in\mathbb{N}}$ tal que \limi{z_n}{x}. 
+	\Ent $(a_n)_{n\in\mathbb{N}}$, dada por $\forall i\in\mathbb{N}, a_i = -z_i$, \eh\ sub\seq\ de $(-x_n)_{n\in\mathbb{N}}$ tal que \hbox{\limi{a_n}{-x}}, pois $\forall \epsilon > 0, \exists a_i \in (a_n)_{n\in\mathbb{N}}$ tal que $|a_i - (-x)| < \epsilon$. Isso \eh\ verdadeiro pois \hbox{$\forall \epsilon > 0, \exists z_i \in (z_n)_{n\in\mathbb{N}}$} tal que $|z_i -  x| < \epsilon$. Essa mesma prova \tambem mostra que se $x\in\mathbb{R}$ \eh\ limite de sub\seq\ de $(-x_n)$, \ent $-x$ \eh\ limite de \seq\ de $(x_n)$
+	
+	Sendo assim, $(-a,\ldots,-A)$ \eh a \seq\ de pontos que \sao limites de sub\seq s de $(-x_n)_{n\in\mathbb{N}}$. Toma-se \ent a \seq\ ordenada $(-A,\ldots,-a)$ de tais limites. Como limsup \eh o menor desses limites, \ent \hbox{limsup$(-x_n) = -A$}.\\
+	
+	
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 5
