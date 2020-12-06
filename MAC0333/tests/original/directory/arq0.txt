@@ -129,7 +129,7 @@ ProgramaÃ§Ã£o MatemÃ¡tica, realizado em Bordeaux, FranÃ§a, no inÃ­cio 
 foi concedido mais um, tambÃ©m ganhador de US$ 1.500, para o alemÃ£o Thomas
 Rothvoss, da University of Washington, com o artigo The_matching_polytope_has
 exponential_extension_complexity.
-Â batatinha
+Â 
 _ _Republicar_
  
 ****** Republicar ******

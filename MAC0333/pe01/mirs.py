@@ -72,7 +72,7 @@ def PrintSelect(tokens, index, files):
 
 
 def mirs (args):
-    parentFolder = args.dir[-1] if args.dir[-1] == '/' else args.dir + '/'
+    parentFolder = args.dir if args.dir[-1] == '/' else args.dir + '/'
     filesInfo = loadData(parentFolder)
     if args.topo is not None:
         PrintTopo(filesInfo[INDEX], args.topo, args.regex, args.regexneg)

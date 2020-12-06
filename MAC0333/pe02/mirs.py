@@ -1,13 +1,8 @@
 import argparse
-import pickle
 import os
 import re
 
-CHARSET = 0
-LISTFILES = CHARSET + 1
-INDEX = CHARSET + 2
-ENCODINGS = CHARSET + 3
-
+import util
 
 # Lists relevant or required command-line options
 argparser = argparse.ArgumentParser()
@@ -24,21 +19,24 @@ argparser.add_argument('-R', '--regexneg', dest='regexneg',
 argparser.add_argument('queryTokens', nargs='*', default=[],
     help='Lista de termos da consulta conjuntiva' )
 
-# Reads serialized file
-def loadData (parentFolder):
-    pkFile = parentFolder + '/mir.pickle'
-    f =  open(pkFile, 'rb')
-    w = pickle.load(f)
-    f.close()
-    print(f"{w[CHARSET]} de {pkFile}\nPickle Information:"\
-          f"\n{len(w[LISTFILES])} documents\n{len(w[INDEX])} tokens\n")
-    return w
-
 # Handles -t option
-def PrintTopo(index, num, match=None, negMatch=None):
-    def compareValue (item): return len(index[item])
-    def compareValue2 (item): return str(item)
-    keys = index.keys()
+def PrintTopo(index, aInd, indMap, aOff, num, match=None, negMatch=None):
+    def compareValue (item):
+        df = 0 # document frequence
+        if item in aKeys:
+            df = len(aInd[item])
+        if item in pKeys:
+            for doc in index[item]:
+                if(indMap[doc[0]] != -1): df += 1
+        return df
+    def compareValue2 (item): return str(item) # len + alphabetical
+    def getIncidence (i):
+        incidence = [indMap[ind[0]] for ind in index[keys[i]] if indMap[ind[0]] != -1]
+        incidence += [(ind[0]+aOff) for ind in aInd[keys[i]]]
+        return incidence
+    aKeys = set(aInd.keys())
+    pKeys = set(index.keys())
+    keys = list(pKeys.union(aKeys))
     keys = sorted(sorted(keys, key=compareValue2, reverse=True), key=compareValue)
     if match is not None:
         regex = re.compile(match)
@@ -49,35 +47,84 @@ def PrintTopo(index, num, match=None, negMatch=None):
     print(f"{len(keys)} tokens matched regex restrictions")
     print(" DF |    Token    | Lista de incidencia")
     for i in range (len(keys)-1, len(keys)-num-1, -1):
-        print(f" {len(index[keys[i]]):{2}} | {keys[i]:{11}} | {index[keys[i]]}")
+        print(f" {len(index[keys[i]]):{2}} | {keys[i]:{11}} | {getIncidence(i)}")
     print()
 
 # Handles SELECT query
-def PrintSelect(tokens, index, files):
-    print("Conjugaçao das listas de termos")
+def PrintSelect(tokens, pIndex, pFiles, aIndex, aFiles, indMap, aOffset):
     sets = []
-    print(" DF |    Token    | Lista de incidencia")
+    aKeys = set(aIndex.keys())
+    pKeys = set(pIndex.keys())
+    keys = pKeys.union(aKeys)
+    print("Conjugaçao das listas de termos")
+    print("  DF  |    Token    | Lista de incidencia")
     for token in tokens:
-        if token not in index.keys():
-            print(f" -- | {token:{11}} | -----")
+        if token not in keys:
+            print(f" ---- | {token:{11}} | -----")
             sets.append(set())
         else:
-            print(f" {len(index[token]):{2}} | {token:{11}} | {index[token]}")
-            sets.append(set([ind for ind in index[token]]))
+            pInc = []
+            aInc = []
+            if token in pKeys:
+                pInc = [indMap[ind[0]] for ind in pIndex[token]
+                        if indMap[ind[0]]!=-1]
+            if token in aKeys:
+                aInc = [ind[0] + aOffset for ind in aIndex[token]]
+            print(f" {len(pIndex[token]):{4}} | {token:{11}} | {pInc + aInc}")
+            sets.append(set([ind for ind in pInc + aInc]))
+    print(sets)
     res = sets[0]
     for st in sets:
         res = res.intersection(st)
     print(f"Existem {len(res)} documentos com os {len(tokens)} termos:")
-    for doc in res: print(f"{doc}: {files[doc]}")
+    for doc in res:
+        if doc >= aOffset:
+            print(f"{doc}: {aFiles[doc - aOffset]}")
+        else:
+            print(f"{doc}: {pFiles[doc]}")
 
+# Linear time on the NUMBER OF FILES in prim+aux+rem
+# Fixed prim (considered in/out) and builds indMap
+def BuildInfo (prim, aux, rem):
+    files = prim[util.LISTFILES]
+    index = prim[util.INDEX]
+    enc = prim[util.ENCODINGS]
+    keys = index.keys()
+    # Removes 'rem' from prim -> indexMap to be used in queries
+    removed = set(rem)
+    toRem = []
+    indMap = {i:i for i in range(len(files))} # Maps initial file ID to final ID
+    offset = 0
+    # Treats modified entries as removed files
+    fs = set(aux[util.LISTFILES])
+    modified = fs.intersection(set(files))
+    for i in range(len(files)):
+        if files[i] in removed or files[i] in modified:
+            toRem.append(i)
+            indMap[i] = -1 # Marked because file was removed
+            offset -= 1
+        else:
+            indMap[i] += offset
+    for i in range(len(toRem)-1, -1, -1):
+        files.pop(toRem[i])
+    print(f"Final list of files: ")
+    for f in files + aux[util.LISTFILES]:
+        print(f)
+    print()
+    return indMap, len(files)
 
 def mirs (args):
-    parentFolder = args.dir[-1] if args.dir[-1] == '/' else args.dir + '/'
-    filesInfo = loadData(parentFolder)
+    parentFolder = args.dir if args.dir[-1] == '/' else args.dir + '/'
+    primInfo, aInfo, rmInfo = util.LoadData(parentFolder, False)
+    indMap, aOffset = BuildInfo(primInfo, aInfo, rmInfo)
     if args.topo is not None:
-        PrintTopo(filesInfo[INDEX], args.topo, args.regex, args.regexneg)
+        PrintTopo(primInfo[util.INDEX], aInfo[util.INDEX], indMap, aOffset,
+                  args.topo, args.regex, args.regexneg)
     if args.queryTokens != []:
-        PrintSelect(args.queryTokens, filesInfo[INDEX], filesInfo[LISTFILES])
+        PrintSelect(args.queryTokens,
+                    primInfo[util.INDEX], primInfo[util.LISTFILES],
+                    aInfo[util.INDEX], aInfo[util.LISTFILES],
+                    indMap, aOffset)
 
 if __name__ == "__main__":
     args = argparser.parse_args()
