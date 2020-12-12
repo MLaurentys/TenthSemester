@@ -97,9 +97,7 @@ class Retriever:
         print()
 
     def _CompareValue(self, item):
-        df = 0  # document frequence
-        if item in self.auxKeys:
-            df = len(self.auxIndex[item])
+        df = len(self.auxIndex[item]) if item in self.auxKeys else 0
         if item in self.keys:
             for doc in self.index[item]:
                 if self.finalDocumentID[doc[0]] != -1:
@@ -107,7 +105,7 @@ class Retriever:
         return df
 
     def _CompareValue2(self, item):
-        return str(item)  # len + alphabetical
+        return str(item)
 
     def _GetIncidence(self, keys, i):
         incidence = [
