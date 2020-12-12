@@ -59,7 +59,7 @@ class Retriever:
                     ]
                 print(
                     f" {len(self.index[token]):{4}} | {token:{11}} | "
-                    f"{pInc + aInc}"
+                    f"{pInc + aInc} | {self.index[token]}"
                 )
                 sets.append(set([ind for ind in pInc + aInc]))
         print(sets)

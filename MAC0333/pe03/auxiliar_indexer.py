@@ -1,6 +1,7 @@
 import util
 import indexer
 import pickle
+import time
 
 
 class MIRA(indexer.MIR):
@@ -60,7 +61,17 @@ class MIRA(indexer.MIR):
         with open(self.root + "/mira.rem", "wb") as f:
             pickle.dump(list(self.deletedFiles), f)
         with open(self.root + "/mira.pickle", "wb") as f:
-            pickle.dump(["MIR 2.0", self.files, self.index, self.encodings], f)
+            pickle.dump(
+                [
+                    "MIR 3.0",
+                    self.files,
+                    self.index,
+                    self.encodings,
+                    self.positionalIndex,
+                    time.time(),
+                ],
+                f,
+            )
         print(
             f"The {len(self.files)} files were processed and resulted in "
             f"{self.wordCount} words, with {len(self.index.keys())} distinct "

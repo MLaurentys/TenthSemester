@@ -5,7 +5,7 @@ import chardet
 import re
 
 import util
-import indexer
+import indexer as Indexer
 import auxiliar_indexer
 
 # Lists relevant or required command-line options
@@ -53,11 +53,11 @@ argparser.add_argument(
 def mir(args):
     parentFolder = args.dir if args.dir[-1] == "/" else args.dir + "/"
     if args.auxiliar:
-        indexer = auxiliarIndexer.MIRA(
+        indexer = auxiliar_indexer.MIRA(
             parentFolder, args.encodeFile, args.verbose, args.showToken
         )
     else:
-        indexer = indexer.MIR(
+        indexer = Indexer.MIR(
             parentFolder, args.encodeFile, args.verbose, args.showToken
         )
     indexer.Build()

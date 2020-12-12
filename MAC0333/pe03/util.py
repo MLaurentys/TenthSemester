@@ -5,6 +5,7 @@ CHARSET = 0
 LISTFILES = CHARSET + 1
 INDEX = CHARSET + 2
 ENCODINGS = CHARSET + 3
+POSITIONAL = CHARSET + 4
 
 # Abstract class for indexer
 class Indexer:

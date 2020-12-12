@@ -2,6 +2,8 @@ import os
 import pickle
 import re
 import chardet
+import time
+import numpy as np
 
 import util
 
@@ -13,6 +15,7 @@ class MIR(util.Indexer):
         self.fixedEncode = {}  # file -> encoding
         self.toIgnore = set()  # List of files and folders
         self.index = {}  # string -> list of document indexes
+        self.positionalIndex = np.array([], dtype=int)
         self.showToken = showToken
         self.encodeFilename = fixedEncodeFilename
         self.root = parentFolder
@@ -30,7 +33,17 @@ class MIR(util.Indexer):
     def Serialize(self):
         open(self.root + "/mir.pickle", "w").close()  # Erases old content
         with open(self.root + "/mir.pickle", "wb") as f:
-            pickle.dump(["MIR 2.0", self.files, self.index, self.encodings], f)
+            pickle.dump(
+                [
+                    "MIR 3.0",
+                    self.files,
+                    self.index,
+                    self.encodings,
+                    self.positionalIndex,
+                    time.time(),
+                ],
+                f,
+            )
         print(
             f"The {len(self.files)} files were processed and resulted in "
             f"{self.wordCount} words, with {len(self.index.keys())} distinct "
@@ -155,6 +168,7 @@ class MIR(util.Indexer):
             encodings[i]["tamanho"] = size
             encodings[i]["errors"] = fStat["errors"]
             self.wordCount += len(words)
+            curWd = 0
             if self.verbose:
                 print(
                     f" {i:{4}} | {str(enc):{10}} | {confi:{10}}"
@@ -168,15 +182,18 @@ class MIR(util.Indexer):
                 elif token in knownTokens:
                     if token not in fileTokens:
                         invertedIndex[token].append(
-                            [i, 1]
-                        )  # 1 is the #occurances
+                            [i, 1, [curWd]]  # 1 is the #occurances
+                        )
                         fileTokens.add(token)
                     else:
-                        invertedIndex[token][-1][1] += 1  # adds to #occurances
+                        # Increments #occurances of the last document
+                        invertedIndex[token][-1][1] += 1
+                        invertedIndex[token][-1][2].append(curWd)
                 else:
-                    invertedIndex[token] = [[i, 1]]
+                    invertedIndex[token] = [[i, 1, [curWd]]]
                     fileTokens.add(token)
                     knownTokens.add(token)
+                curWd += 1
         if self.showToken:
             for t in knownTokens:
                 print(t)
@@ -224,5 +241,12 @@ class MIR(util.Indexer):
     def _StripPunctuation(self, wd):
         return re.sub(r"([^\w\s]|\d|_)+", " ", wd).split()
 
-    def _BuildPositionalIndex():
-        pass
+    def _BuildPositionalIndex(self):
+        index = self.index
+        positional = self.positionalIndex
+        curInd = 0
+        for tkIndex in self.index.values():
+            for docIndex in tkIndex:
+                positional = np.concatenate((positional, docIndex[2]))
+                docIndex[2] = curInd
+                curInd += docIndex[1]
