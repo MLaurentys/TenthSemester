@@ -40,12 +40,14 @@ argparser.add_argument(
 argparser.add_argument(
     "-o",
     type=int,
+    default=0,
     dest="sortAlg",
     help="Selects sorting algorithm [0-5] used to define most common tokens",
 )
 argparser.add_argument(
     "-a",
     type=int,
+    default=-1,
     dest="amountToShow",
     help="How many tokens fitting query are shown",
 )
@@ -60,13 +62,11 @@ argparser.add_argument(
 def mirs(args):
     parentFolder = args.dir if args.dir[-1] == "/" else args.dir + "/"
     primInfo, aInfo, rmInfo = util.LoadData(parentFolder, False)
-    myRetriever = retriever.Retriever(primInfo, aInfo, rmInfo)
+    myRetriever = retriever.Retriever(
+        primInfo, args.sortAlg, args.amountToShow, aInfo, rmInfo
+    )
     if args.topo is not None:
-        myRetriever.PrintTopo(
-            args.topo,
-            args.regex,
-            args.regexneg,
-        )
+        myRetriever.PrintTopo(args.topo, args.regex, args.regexneg)
     if args.queryTokens != []:
         myRetriever.PrintSelect(args.queryTokens)
 

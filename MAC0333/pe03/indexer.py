@@ -248,5 +248,6 @@ class MIR(util.Indexer):
         for tkIndex in self.index.values():
             for docIndex in tkIndex:
                 positional = np.concatenate((positional, docIndex[2]))
+                print(positional)
                 docIndex[2] = curInd
                 curInd += docIndex[1]
