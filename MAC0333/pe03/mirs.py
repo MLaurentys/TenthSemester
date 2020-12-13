@@ -63,7 +63,7 @@ def mirs(args):
     parentFolder = args.dir if args.dir[-1] == "/" else args.dir + "/"
     primInfo, aInfo, rmInfo = util.LoadData(parentFolder, False)
     myRetriever = retriever.Retriever(
-        primInfo, args.sortAlg, args.amountToShow, aInfo, rmInfo
+        primInfo, args.sortAlg, args.amountToShow, args.verbose, aInfo, rmInfo
     )
     if args.topo is not None:
         myRetriever.PrintTopo(args.topo, args.regex, args.regexneg)

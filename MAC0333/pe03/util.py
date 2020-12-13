@@ -1,6 +1,7 @@
 import pickle
 import os
 from sys import maxsize
+import re
 
 CHARSET = 0
 LISTFILES = CHARSET + 1
@@ -25,14 +26,11 @@ def GetShortestIntervalIntersectingTwoLists(l1, l2):
     minInterval = [0, maxsize]
     i = 0
     j = 0
-    print("Entrou")
     while i < len(l1) and j < len(l2):
         dis = abs(l2[j] - l1[i])
-        print("dis = ", dis)
         if dis < minDist:
             minDist = dis
             minInterval = [min(l2[j], l1[i]), max(l2[j], l1[i])]
-            print(minInterval)
         if dis == 1:
             break
         if l1[i] < l2[j]:
@@ -43,7 +41,6 @@ def GetShortestIntervalIntersectingTwoLists(l1, l2):
 
 
 def GetSmallestInterval(lists):
-    print(lists)
     minDist = maxsize
     minInterval = [0, maxsize]
     for i in range(len(lists)):
@@ -53,6 +50,10 @@ def GetSmallestInterval(lists):
                 minInterval = inter
                 minDist = len(inter)
     return minInterval
+
+
+def StripPunctuation(word):
+    return re.sub(r"([^\w\s]|\d|_)+", " ", word).split()
 
 
 # Reads serialized file

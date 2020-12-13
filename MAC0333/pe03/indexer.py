@@ -210,7 +210,7 @@ class MIR(util.Indexer):
             words = f.read().split()
         generatedWords = []
         for wd in words:
-            generatedWords += self._StripPunctuation(wd)
+            generatedWords += util.StripPunctuation(wd)
         return fStat, generatedWords
 
     def _GetEncode(self, filename):
@@ -238,16 +238,13 @@ class MIR(util.Indexer):
         encode["tamanho"] = os.path.getsize(filename)
         return encode
 
-    def _StripPunctuation(self, wd):
-        return re.sub(r"([^\w\s]|\d|_)+", " ", wd).split()
-
     def _BuildPositionalIndex(self):
         index = self.index
-        positional = self.positionalIndex
+        positional = np.array([], dtype=int)
         curInd = 0
         for tkIndex in self.index.values():
             for docIndex in tkIndex:
                 positional = np.concatenate((positional, docIndex[2]))
-                print(positional)
                 docIndex[2] = curInd
                 curInd += docIndex[1]
+        self.positionalIndex = positional
