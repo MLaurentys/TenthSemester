@@ -80,8 +80,8 @@ class MIR(util.Indexer):
     def _ReadEncodeFile(self):
         if self.encodeFilename == "":
             return
-        print(f"Instruçoes ao indexador tomadas de {encodeFilename}")
-        with open(encodeFilename) as f:
+        print(f"Instruçoes ao indexador tomadas de {self.encodeFilename}")
+        with open(self.encodeFilename) as f:
             lines = f.readlines()
         for line in lines:
             print(line[0:-1])
@@ -91,7 +91,7 @@ class MIR(util.Indexer):
             if line[1] == "x":
                 self.toIgnore.add(os.path.abspath(self.root + wds[1]))
             elif line[1] == "u":
-                self.fixedEncode[parentFolder + wds[1]] = "utf-8"
+                self.fixedEncode[self.root + wds[1]] = "utf-8"
         print()
 
     def _GetFiles(self):
@@ -142,6 +142,7 @@ class MIR(util.Indexer):
             for i in range(len(files))
         ]
         print(f"Foram encontrados {len(files)} documentos.\n")
+        self.files = files
         for i, file in enumerate(files):
             self.encodings[i] = {"modificado": os.path.getmtime(file)}
 
@@ -331,8 +332,9 @@ class MIRA(MIR):
             f"The {len(self.files)} files were processed and resulted in "
             f"{self.wordCount} words, with {len(self.index.keys())} distinct "
             f"tokens. Informations saved on mira.pickle and mira.rem to load "
-            f"via pickle."
+            f"via pickle:"
         )
+        [print(fname) for fname in self.files]
 
 
 def mir(args):

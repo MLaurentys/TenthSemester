@@ -86,7 +86,7 @@ def PrintTopo(index, aInd, indMap, aOff, num, match=None, negMatch=None):
         keys = [k for k in keys if not regex.match(k)]
     print(f"{len(keys)} tokens matched regex restrictions")
     print(" DF |    Token    | Lista de incidencia")
-    for i in range(len(keys) - 1, len(keys) - num - 1, -1):
+    for i in range(len(keys) - 1, max(0,len(keys) - num - 1), -1):
         print(
             f" {len(index[keys[i]]):{2}} | {keys[i]:{11}} | {getIncidence(i)}"
         )

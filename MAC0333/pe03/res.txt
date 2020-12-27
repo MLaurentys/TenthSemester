@@ -1,0 +1,285 @@
+Instruçoes ao indexador tomadas de encodes.lst
+@u subdirA/subdirB/arq5.txt
+@u arq1.txt
+@x subdirA/subdirB
+@x xarq7.tx
+
+Diretório /home/mtlaurentys/github/TenthSemester/MAC0333/tests/copy/directory/subdirA/subdirB excluı́do da indexaçao
+Arquivo xarq7.txt excluı́do da indexaçao
+Lista de arquivos .txt encontrados na sub-árvore do diretório: ../tests/copy/directory/
+0 arq0.txt
+1 arq1.txt
+2 arq2.txt
+3 subdirA/arq3.txt
+4 subdirA/arq4.txt
+5 subdirC/arq6.txt
+6 zoutroarq8.txt
+Foram encontrados 7 documentos.
+
+The 7 files were processed and resulted in 6942 words, with 1207 distinct tokens. Informations saved on mir.pickle to load via pickle.
+MIR 3.0 de ../tests/copy/directory/mir.pickle
+Pickle Information:
+7 documents
+1207 tokens
+
+Lista de arquivos .txt encontrados na sub-árvore do diretório: ../tests/copy/directory/
+0 arq0.txt
+1 arq2.txt
+2 subdirA/arq3.txt
+3 subdirA/arq4.txt
+4 subdirA/subdirB/arq5.txt
+5 subdirC/arq6.txt
+6 xarq7.txt
+7 zoutroarq8.txt
+Foram encontrados 8 documentos.
+
+De 7 para 8, foram acrescentados 2 arquivos novos e 1 removidos.
+Permaneceram 6, dos quais 1 foram modificados.
+The 3 files were processed and resulted in 2201 words, with 617 distinct tokens. Informations saved on mira.pickle and mira.rem to load via pickle.
+MIR 3.0 de ../tests/copy/directory/mir.pickle
+Pickle Information:
+7 documents
+1207 tokens
+
+MIR 3.0 de ../tests/copy/directory/mira.pickle
+Pickle Information:
+3 documents
+617 tokens
+
+Pickle Information of ../tests/copy/directory/mira.rem:
+1 documents removed
+
+Final list of files: 
+../tests/copy/directory/arq2.txt
+../tests/copy/directory/subdirA/arq3.txt
+../tests/copy/directory/subdirA/arq4.txt
+../tests/copy/directory/subdirC/arq6.txt
+../tests/copy/directory/zoutroarq8.txt
+../tests/copy/directory/arq0.txt
+../tests/copy/directory/subdirA/subdirB/arq5.txt
+../tests/copy/directory/xarq7.txt
+
+MIR 3.0 de ../tests/copy/directory/mir.pickle
+Pickle Information:
+7 documents
+1207 tokens
+
+MIR 3.0 de ../tests/copy/directory/mira.pickle
+Pickle Information:
+3 documents
+617 tokens
+
+Pickle Information of ../tests/copy/directory/mira.rem:
+1 documents removed
+
+Final list of files: 
+../tests/copy/directory/arq2.txt
+../tests/copy/directory/subdirA/arq3.txt
+../tests/copy/directory/subdirA/arq4.txt
+../tests/copy/directory/subdirC/arq6.txt
+../tests/copy/directory/zoutroarq8.txt
+../tests/copy/directory/arq0.txt
+../tests/copy/directory/subdirA/subdirB/arq5.txt
+../tests/copy/directory/xarq7.txt
+
+Conjugaçao das listas de termos
+  DF  |     Token     | Lista de incidencia
+    4 | prêmio        | [0, 2, 3, 7]
+    4 | internacional | [0, 2, 3, 5]
+    7 | ime           | [0, 1, 2, 3, 4, 5, 7]
+Existem 3 documentos com os 3 termos:
+0: - ../tests/copy/directory/arq2.txt
+2: - ../tests/copy/directory/subdirA/arq4.txt
+3: - ../tests/copy/directory/subdirC/arq6.txt
+MIR 3.0 de ../tests/copy/directory/mir.pickle
+Pickle Information:
+7 documents
+1207 tokens
+
+MIR 3.0 de ../tests/copy/directory/mira.pickle
+Pickle Information:
+3 documents
+617 tokens
+
+Pickle Information of ../tests/copy/directory/mira.rem:
+1 documents removed
+
+Final list of files: 
+../tests/copy/directory/arq2.txt
+../tests/copy/directory/subdirA/arq3.txt
+../tests/copy/directory/subdirA/arq4.txt
+../tests/copy/directory/subdirC/arq6.txt
+../tests/copy/directory/zoutroarq8.txt
+../tests/copy/directory/arq0.txt
+../tests/copy/directory/subdirA/subdirB/arq5.txt
+../tests/copy/directory/xarq7.txt
+
+Conjugaçao das listas de termos
+  DF  |     Token     | Lista de incidencia
+    4 | prêmio        | [0, 2, 3, 7]
+    4 | internacional | [0, 2, 3, 5]
+    7 | ime           | [0, 1, 2, 3, 4, 5, 7]
+Existem 3 documentos com os 3 termos:
+0: 1.02 ../tests/copy/directory/arq2.txt
+2: 0.81 ../tests/copy/directory/subdirA/arq4.txt
+3: 0.76 ../tests/copy/directory/subdirC/arq6.txt
+MIR 3.0 de ../tests/copy/directory/mir.pickle
+Pickle Information:
+7 documents
+1207 tokens
+
+MIR 3.0 de ../tests/copy/directory/mira.pickle
+Pickle Information:
+3 documents
+617 tokens
+
+Pickle Information of ../tests/copy/directory/mira.rem:
+1 documents removed
+
+Final list of files: 
+../tests/copy/directory/arq2.txt
+../tests/copy/directory/subdirA/arq3.txt
+../tests/copy/directory/subdirA/arq4.txt
+../tests/copy/directory/subdirC/arq6.txt
+../tests/copy/directory/zoutroarq8.txt
+../tests/copy/directory/arq0.txt
+../tests/copy/directory/subdirA/subdirB/arq5.txt
+../tests/copy/directory/xarq7.txt
+
+Conjugaçao das listas de termos
+  DF  |     Token     | Lista de incidencia
+    4 | prêmio        | [0, 2, 3, 7]
+    4 | internacional | [0, 2, 3, 5]
+    7 | ime           | [0, 1, 2, 3, 4, 5, 7]
+Existem 3 documentos com os 3 termos:
+0: 1.25 ../tests/copy/directory/arq2.txt
+2: 1.0 ../tests/copy/directory/subdirA/arq4.txt
+3: 0.93 ../tests/copy/directory/subdirC/arq6.txt
+MIR 3.0 de ../tests/copy/directory/mir.pickle
+Pickle Information:
+7 documents
+1207 tokens
+
+MIR 3.0 de ../tests/copy/directory/mira.pickle
+Pickle Information:
+3 documents
+617 tokens
+
+Pickle Information of ../tests/copy/directory/mira.rem:
+1 documents removed
+
+Final list of files: 
+../tests/copy/directory/arq2.txt
+../tests/copy/directory/subdirA/arq3.txt
+../tests/copy/directory/subdirA/arq4.txt
+../tests/copy/directory/subdirC/arq6.txt
+../tests/copy/directory/zoutroarq8.txt
+../tests/copy/directory/arq0.txt
+../tests/copy/directory/subdirA/subdirB/arq5.txt
+../tests/copy/directory/xarq7.txt
+
+Conjugaçao das listas de termos
+  DF  |     Token     | Lista de incidencia
+    4 | prêmio        | [0, 2, 3, 7]
+    4 | internacional | [0, 2, 3, 5]
+    7 | ime           | [0, 1, 2, 3, 4, 5, 7]
+Existem 3 documentos com os 3 termos:
+0: [5, 9] ../tests/copy/directory/arq2.txt
+3: [39, 84] ../tests/copy/directory/subdirC/arq6.txt
+2: [71, 177] ../tests/copy/directory/subdirA/arq4.txt
+MIR 3.0 de ../tests/copy/directory/mir.pickle
+Pickle Information:
+7 documents
+1207 tokens
+
+MIR 3.0 de ../tests/copy/directory/mira.pickle
+Pickle Information:
+3 documents
+617 tokens
+
+Pickle Information of ../tests/copy/directory/mira.rem:
+1 documents removed
+
+Final list of files: 
+../tests/copy/directory/arq2.txt
+../tests/copy/directory/subdirA/arq3.txt
+../tests/copy/directory/subdirA/arq4.txt
+../tests/copy/directory/subdirC/arq6.txt
+../tests/copy/directory/zoutroarq8.txt
+../tests/copy/directory/arq0.txt
+../tests/copy/directory/subdirA/subdirB/arq5.txt
+../tests/copy/directory/xarq7.txt
+
+Conjugaçao das listas de termos
+  DF  |     Token     | Lista de incidencia
+    4 | prêmio        | [0, 2, 3, 7]
+    4 | internacional | [0, 2, 3, 5]
+    7 | ime           | [0, 1, 2, 3, 4, 5, 7]
+Existem 3 documentos com os 3 termos:
+0: [8, 9] ../tests/copy/directory/arq2.txt
+2: [54, 71] ../tests/copy/directory/subdirA/arq4.txt
+3: [84, 103] ../tests/copy/directory/subdirC/arq6.txt
+MIR 3.0 de ../tests/copy/directory/mir.pickle
+Pickle Information:
+7 documents
+1207 tokens
+
+MIR 3.0 de ../tests/copy/directory/mira.pickle
+Pickle Information:
+3 documents
+617 tokens
+
+Pickle Information of ../tests/copy/directory/mira.rem:
+1 documents removed
+
+Final list of files: 
+../tests/copy/directory/arq2.txt
+../tests/copy/directory/subdirA/arq3.txt
+../tests/copy/directory/subdirA/arq4.txt
+../tests/copy/directory/subdirC/arq6.txt
+../tests/copy/directory/zoutroarq8.txt
+../tests/copy/directory/arq0.txt
+../tests/copy/directory/subdirA/subdirB/arq5.txt
+../tests/copy/directory/xarq7.txt
+
+Conjugaçao das listas de termos
+  DF  |     Token     | Lista de incidencia
+    4 | prêmio        | [0, 2, 3, 7]
+    4 | internacional | [0, 2, 3, 5]
+    7 | ime           | [0, 1, 2, 3, 4, 5, 7]
+Existem 3 documentos com os 3 termos:
+0: [5, 9] ../tests/copy/directory/arq2.txt Kohayakawa professor no IME USP ganha prêmio internacional em matemática AGÊNCIA
+3: [39, 84] ../tests/copy/directory/subdirC/arq6.txt foto pesquisador do IME USP que sugere o uso de um novo modelo teórico para análise de algoritmos utilizados em redes de sensores sem fio ganha prêmio em conferência realizada no Canadá Modelo matemático é premiado spacer gif Por Thiago Romero Agência FAPESP Deu zebra na ª Conferência Internacional em Computação Sem
+2: [71, 177] ../tests/copy/directory/subdirA/arq4.txt é um concurso internacional realizado anualmente nos Estados Unidos que premia a capacidade intelectual de uma equipe de cientistas em gerar e analisar dados de biologia molecular Na cerimônia de entrega da edição de do prêmio realizada no mês passado ocorreu uma grande surpresa A competição organizada pela Duke University foi vencida por uma equipe formada por pesquisadores de diversas unidades da Universidade de São Paulo É a primeira vez em cinco anos do prêmio que uma universidade de fora dos Estados Unidos é a ganhadora O grupo brasileiro teve como coordenadores os professores Junior Barrera do Departamento de Ciência da Computação do Instituto de Matemática e Estatística MAC IME USP e Hernando
+MIR 3.0 de ../tests/copy/directory/mir.pickle
+Pickle Information:
+7 documents
+1207 tokens
+
+MIR 3.0 de ../tests/copy/directory/mira.pickle
+Pickle Information:
+3 documents
+617 tokens
+
+Pickle Information of ../tests/copy/directory/mira.rem:
+1 documents removed
+
+Final list of files: 
+../tests/copy/directory/arq2.txt
+../tests/copy/directory/subdirA/arq3.txt
+../tests/copy/directory/subdirA/arq4.txt
+../tests/copy/directory/subdirC/arq6.txt
+../tests/copy/directory/zoutroarq8.txt
+../tests/copy/directory/arq0.txt
+../tests/copy/directory/subdirA/subdirB/arq5.txt
+../tests/copy/directory/xarq7.txt
+
+Conjugaçao das listas de termos
+  DF  |     Token     | Lista de incidencia
+    4 | prêmio        | [0, 2, 3, 7]
+    4 | internacional | [0, 2, 3, 5]
+    7 | ime           | [0, 1, 2, 3, 4, 5, 7]
+Existem 3 documentos com os 3 termos:
+0: [8, 9] ../tests/copy/directory/arq2.txt IME USP ganha prêmio internacional em matemática AGÊNCIA
+2: [54, 71] ../tests/copy/directory/subdirA/arq4.txt USP Brasileiros ganham prêmio inédito spacer gif Agência FAPESP O Critical Assessment of Microarray Data Analysis Camda é um concurso internacional realizado anualmente nos
+3: [84, 103] ../tests/copy/directory/subdirC/arq6.txt na ª Conferência Internacional em Computação Sem Fio e Móvel Redes e Comunicações WiMob em Montreal no Canadá Um brasileiro levou o prêmio de melhor artigo
