@@ -1,0 +1,20 @@
+\textbf{Provas extra que irei usar:}
+
+\criterio da \comparacao
+
+Faltou demonstrar que dado \seqn{x} e \seqn{y} \sequencias de numeros positivos tais que $\forall n \in \N, x_n \leq y_n$:
+
+($i$) Se \series{\N} $y_i$ converge, \entao \series{\N} $x_i$ converge.
+
+Considere as somas parciais $S_n = x_1 + \ldots + x_n$ e $T_n = y_1 + \ldots + y_n$. Claro que $S_n \leq T_n$.
+
+Considere, agora, que:
+
+\begin{align*}
+	0\leq S_n = x_i + \ldots + x_n &\leq x_i + \ldots + x_n + y_{n+1} + y_{n+2} + \ldots = S_n + (T - T_n) \\
+	S_n + (T - T_n) &= T + (S_n - T_n) \leq T + (0) = T
+\end{align*}
+
+Note que \seqn{S} \eh \nao decrescente e que $(T + (S_n + T_n))_{n\in\N}$ \eh \nao crescente. Sendo assim, dados quaisquer tres naturais $n,m,L$, \eh fato que $S_n, S_m \in [S_L, T + (S_L - T_L)]$ e isso mostra que a \sequencia $S_n$ \eh de cauchy. Como visto em aula, $S_n$ ser de cauchy implica que \series{\N} $S_n$ converge.
+
+%($ii$) Se \series{\N} $x_i$ diverge, \entao \series{\N} $y_i$ diverge.

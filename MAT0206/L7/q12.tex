@@ -1,0 +1,38 @@
+\textbf{Q.12}
+
+Tome $a<b\in I$. Tome $x\in [a,b]$. 
+
+\begin{align*}
+	x &= \frac{b-a}{b-a}x \\
+	&= \frac{-ax + bx}{b-a} \\
+	&= \frac{ab -ax + bx - ab}{b-a} \\
+	&= \frac{a(b - x) + b(x - a)}{b-a} \\
+	&\overset{t = \frac{b-x}{b-a}}{=} ta + \frac{b-b+x-a}{b-a}b \\
+	&= ta + (\frac{b-a}{b-a} - \frac{b-x}{b-a})b \\
+	&= ta + (1-t)b
+\end{align*}
+
+Note que $\forall x \in [a,b], t = \frac{b-x}{b-a}$ \eh tal que $t \in [0,1]$.
+
+Caso $x = a$, $t=1$ e $f(ta + (1-t)b) = f(ta) = f(a) = 1f(a) = tf(a) + (1-t)f(b)$. 
+
+Caso $x = b$, $t=0$ e $f(ta + (1-t)b) = f(b) = 1f(b) = tf(a) + (1-t)f(b)$. 
+
+Caso $a < x < b$, temos $f(x) \leq f(a) + \frac{f(b)- f(a)}{b-a}(x-a)$. Tomando, como acima visto, $t = \frac{b-x}{b-a}$, temos $f(x) = f(ta + (1-t)b)$. Assim:
+
+\begin{align*}
+	f(ta + (1-t)b) &\leq f(a) + \frac{f(b)- f(a)}{b-a}(x-a) \\ 
+	&= f(a) + (f(b) - f(a))\frac{(b - a) - (b-x)}{b-a} \\
+	&= f(a) + (f(b) - f(a))(1-t) \\
+	&= f(a) - f(a) + tf(a) + f(b) - tf(b) \\
+	&= tf(a) + (1-t)f(b)
+\end{align*}
+
+Assim temos que dados $a < b \in I$, qualquer $x \in [a,b]$ pode ser escrito como $ta + (1-t)b$ com $t\in [0,1]$ e que $f(ta + (1-t)b) \leq tf(a) + (1-t)f(b)$, como desejado.
+
+
+
+
+
+
+

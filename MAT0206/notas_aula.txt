@@ -1,0 +1,39 @@
+Serie converge se existe o limite Sn (das somas parciais) nos reais. Se ele existe, serie xn := limSn
+
+Se nao converge, ela diverge.
+
+Series oscilante diverge e serie geometrica com a>1 diverge. Serie geometrica com 0<a<1 converge para 1/(1-a)
+
+serie xn e absolutamente convergente se serie|xn| eh convergente
+ 
+absolutamente convergente -> convergente 
+
+CAUCHY -> sequencia em que os numero ficam arbitrariamente proximos
+
+sequencia converge sse sequencia eh de cauchy
+
+CRITERIO 1: Criterio de cauchy para convegerncia de series.
+Dado eps, existe n0 tq |sum_i=m^m+p=m x_i| < eps, qualquer m>=n0  e p natural
+OU
+dado eps
+|S_n+p - S_n| < eps, para algum n natural e qualquer p natural
+
+Criterio da comparacao: xn <= yn 
+=> sum yn convergente, entao sum xn converge. sum xn <= sum yn
+=> sum xn diverge, entao yn diverge. Alem disso, se sum xn = +inf , sum yn = + infd
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

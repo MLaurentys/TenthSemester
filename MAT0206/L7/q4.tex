@@ -1,0 +1,21 @@
+\textbf{Q.4} Mostar que, dado $X \subset \R$.
+
+$\forall \epsilon > 0$ existe cobertura $I$ enumeravel de $X$ por intervalos abertos tal que \series{\N} $|I_i| < \epsilon \iff$ $\forall \epsilon > 0$ existe cobertura $J$ enumeravel de $X$ por intervalos fechados tal que \series{\N} $|J_i| < \epsilon$.
+
+($\Rightarrow$)
+
+Dado $\epsilon > 0$. Seja $I$ uma cobertura enumeravel por abertos de $X$ tal que \mbox{\series{\N}~$|I_i| < \epsilon$}. Considere agora um conjunto enumeravel de intervalos fechados $J$ dado por $J_n~=~I_n~+~\partial~I_n$, isto \eh, se $I_n = (a,b)$, \entao $J_n = [a,b]$. Notando que qualquer $x\in X$ coberto por algum $I_n \in I$ \eh \tambem coberto por $J_n$, \entao $J$ \eh uma cobertura enumeravel de $X$. Tambem \eh verdade que $\forall n \in \N, |J_n| = |I_n|$, por \definicao. Sendo assim, \series{\N} $|J_i|$ = \series{\N} $|I_i| < \epsilon$.
+
+Temos \entao que $\forall \epsilon > 0$ existe cobertura $I$ enumeravel de $X$ por intervalos abertos tal que \series{\N} $|I_i| < \epsilon \Rightarrow$ $\forall \epsilon > 0$ existe cobertura $J$ enumeravel de $X$ por intervalos fechados tal que \series{\N} $|J_i| < \epsilon$.
+
+($\Leftarrow$)
+
+Dado $\epsilon > 0$, tome $\delta$ tal que $\delta < \frac{\epsilon}{2}$. Seja $J$ uma cobertura enumeravel por fechados de $X$ tal que \series{\N}~$|J_i| < \delta$. Seja $L$ um segundo conjunto enumeralvel de intervalos fechados criado a partir de $J$. $L$ \eh tal que, se $J_n = [a,b]$, \entao $L_n = [a-\frac{b-a}{2}, b + \frac{b-a}{2}]$. \Eh claro que $L$ \tambem \eh uma cobertura por fechados de $X$ pois $\forall n \in \N, J_n \subset L_n$ e $\forall x \in X, \exists n \in \N$ tal que $x \in J_n, x \in L_n$.
+
+Tambem \eh claro que $\forall n \in \N, |L_n| = 2\times |J_n|$, pela forma como $L_n$ foi definido. Sendo assim, 
+
+$$\series{\N} |L_i| = 2\times\series{\N} |J_i| < 2\times \delta < \epsilon$$
+
+Considere, agora, o conjunto \enumeravel de intervalos abertos $I$ tal que, $\forall n \in \N$, se $L_n = [a,b]$ \entao $I_n = (a,b)$. Notando que, $\forall n \in \N, J_n \subset I_n$ (pela forma como $L$ foi contruido), $I$ \tambem \eh uma cobertura de $X$. Novamente, como $\forall n \in \N, |I_n| = |L_n|$, \entao \series{\N}$|I_i| = \series{\N}|L_i| < \epsilon$. Logo, $I$ \eh uma cobertura \enumeravel de $X$ e \series{\N}$|I_i| < \epsilon$.
+
+Temos \entao que $\forall \epsilon > 0$ existe cobertura $J$ \enumeravel de $X$ por intervalos fechados tal que \series{\N} $|J_i| < \epsilon \Rightarrow$ $\forall \epsilon > 0$ existe cobertura $I$ \enumeravel de $X$ por intervalos abertos tal que \series{\N} $|I_i| < \epsilon$.

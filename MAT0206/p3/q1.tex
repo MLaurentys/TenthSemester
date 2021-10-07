@@ -1,0 +1,87 @@
+\textbf{Q.1}
+
+\textbf{a)}
+
+[Por \contradicao]
+
+Temos que:
+
+\begin{align*}
+\liminf{n\rightarrow\infty} \sqrt[n]{x_n} &< \liminf{n\rightarrow\infty} \frac{x_{n+1}}{x_n} \\
+\exists c; \liminf{n\rightarrow\infty} \sqrt[n]{x_n} < c &<  \liminf{n\rightarrow\infty} \frac{x_{n+1}}{x_n}
+\end{align*}
+
+A segunda desigualdade da segunda linha mostra que $\exists N\in\N$ tal que $\forall n \ge N$ tem-se $c < \frac{x_{n+1}}{x_n}$, visto que o $\liminf{}$ \eh o menor ponto de \acumulacao.
+
+Tomando $n_0 > N$ tem-se que:
+
+$\begin{cases*}
+	\frac{x_{N+1}}{x_N} > c \\
+	\ldots \\
+	\frac{x_{n_0}}{x_{n_0 - 1}} > c
+\end{cases*}$
+
+Multiplicando esses $(n_0 - N)$ termos temos que:
+
+\begin{align*}
+	\frac{x_{N+1}}{x_N} \cdot \ldots \cdot \frac{x_{n_0}}{x_{n_0 - 1}} &> c \cdot \ldots \cdot c \text{ *} \\
+	&\iff \\
+	\frac{x_{n_0}}{x_N} &> c^{n_0 - N}\\
+	&\iff\\
+	x_{n_0} &> c^{n_0} \cdot \frac{x_N}{c^N} \\
+	&\iff\\
+	\sqrt[n_0]{x_{n_0}} &> c \cdot \sqrt[n_0]{\frac{x_N}{c^N}}
+\end{align*}
+
+* Note que a \sequencia \eh de termos positivos, logo \nao ha problema com os sinais.
+
+Sendo assim, $\forall n > N, \sqrt[n]{x_n} > c \cdot \sqrt[n]{\frac{x_N}{c^N}}$. Ja foi visto (L6 E4.2,4.3) que \mbox{\limi{\sqrt[n]{\frac{x_N}{c^N}}}{1}}, logo, tem-se 
+$
+\liminf{n\rightarrow\infty}\sqrt[n]{x_n} \ge c \cdot \liminf{n\rightarrow\infty} \sqrt[n]{\frac{x_N}{c^N}} \Rightarrow 
+\liminf{n\rightarrow\infty}\sqrt[n]{x_n} \ge c
+$. Logo, tem-se \contradicao com a hipotese inicial. Portanto, $\liminf{n\rightarrow\infty} \frac{x_{n+1}}{x_n} \le \liminf{n\rightarrow\infty} \sqrt[n]{x_n}$
+
+\textbf{b)}
+
+$$
+\lim_{n\rightarrow\infty} \frac{\sqrt[n]{n!}}{n} = \frac{1}{e}
+$$
+
+Por \definicao tem-se 
+
+\begin{align*}
+	\lim_{n\rightarrow\infty} (1 + \frac{1}{n})^n &= e \\
+	\text{logo } \lim_{n\rightarrow\infty} \frac{1}{(1 + \frac{1}{n})^n} &= \frac{1}{e}
+\end{align*}
+
+Nota-se que \seqn{x} dada por $x_n = \lim_{n\rightarrow\infty} \frac{\sqrt[n]{n!}}{n}$ \eh de termos positivos. Foi visto em aula que para \sequencia de termos positivos:
+
+$$
+\text{lim inf}_{n\rightarrow\infty} \frac{x_{n+1}}{x_n} \le \text{lim inf}_{n\rightarrow\infty} \sqrt[n]{x_n} \le \text{lim sup}_{n\rightarrow\infty} \sqrt[n]{x_n} \le \text{lim sup}_{n\rightarrow\infty} \frac{x_{n+1}}{x_n}
+$$
+
+Nota-se que todas as desigualdades foram provadas (1a no item a, 2a na P2, 3a em aula).
+
+Vou usar a \sequencia \seqn{x} dada por $x_n = \frac{x!}{n^n}$. Vou mostrar que $\text{lim inf}_{n\rightarrow\infty} \frac{x_{n+1}}{x_n} = \text{lim sup}_{n\rightarrow\infty} \frac{x_{n+1}}{x_n}$, a partir do resultado que \limi{\frac{x_{n+1}}{x_n}}{L}, pois como ja vimos, se a \sequencia converge para um limite, \entao lim inf $=$ lim sup. Alem disso, isso mostrara que $\text{lim inf}_{n\rightarrow\infty} \sqrt[n]{x_n} = \text{lim sup}_{n\rightarrow\infty} \sqrt[n]{x_n} = L$ (sanduiche) e isso, conforme ja visto, mostra que lim$_{n\rightarrow\infty} \sqrt[n]{x_n} = L$. O interesse de tomar $x_n = \frac{x!}{n^n}$ vem do fato de $\sqrt[n]{x_n} = \frac{\sqrt[n]{x!}}{n}$ que, por consequencia, tera o valor $L$.
+
+Seguindo,
+
+\begin{align*}
+	\lim_{n\rightarrow\infty} \frac{\frac{(n+1)!}{(n+1)^{n+1}}}{\frac{n!}{n^n}} &= \lim_{n\rightarrow\infty} \frac{(n+1)!}{n!}\cdot\frac{n^n}{(n+1)^{n+1}} \\
+	&= \lim_{n\rightarrow\infty} \frac{n+1}{1}\cdot\frac{n^n}{(n+1)^{n+1}}\\
+	&= \lim_{n\rightarrow\infty} \frac{n^n}{(n+1)^n}\\
+	&= (\frac{n}{n+1})^n \\
+	&= \frac{1}{(\frac{n}{n+1})^n}\\
+	&= \frac{1}{e}
+\end{align*}
+
+Conferme ja explicado, temos que \mbox{$\lim_{n\rightarrow\infty}\frac{x_{n+1}}{x_n} = \lim_{n\rightarrow\infty}\sqrt[n]{x_n} =  \lim_{n\rightarrow\infty}\frac{\sqrt[n]{x!}}{n} = \frac{1}{e}$}.
+
+
+
+
+
+
+
+
+

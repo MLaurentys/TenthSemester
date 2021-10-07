@@ -1,0 +1,83 @@
+\textbf{Q.2}
+
+\textbf{a)}
+
+Tome $h:X\rightarrow\R$ dada por $h = f\cdot g$. Dado $\epsilon > 0$.
+
+Como $f$ e $g$ \sao limitadas, temos que $\exists L\in\R; \forall x\in X; L>|f(x)|$ e $L>|g(x)|$. Fixe qualquer tal $L$ e tome \tambem $\beta = \frac{\epsilon}{L}$.
+
+
+Como $f$ e $g$ uniformemente \continua s temos que $\exists \delta_f,\delta_g > 0$ tais que \mbox{$\forall x,y \in X$}, $|x-y| < \delta_f \Rightarrow |f(x)-f(y)| < \frac{\beta}{2}$ e $|x-y| < \delta_g \Rightarrow |g(x)-g(y)| < \frac{\beta}{2}$.
+
+
+Fixe \entao $\delta = \min\{\delta_f, \delta_g\}$. Tomando $x,y \in X$ com $|x-y| < \delta$, temos:
+
+\begin{align*}
+	|h(x) - h(y)| &= |f(x)\cdot g(x) - f(y)\cdot g(y)| \\
+	&= |f(x)\cdot g(x) + f(x)\cdot g(y) - f(y)\cdot g(y) - f(x)\cdot g(y)| \\
+	&= |f(x)\cdot(g(x) + g(y)) - g(y)\cdot (f(x) + f(y))| \\
+	&\leq ||f(x)\cdot(g(x) + g(y))| + |g(y)\cdot (f(x) + f(y))||\\
+	&= ||f(x)|\cdot|(g(x) + g(y))| + |g(y)|\cdot|(f(x) + f(y))||
+\end{align*}
+
+Usando a hipotese de que $f$ e $g$ \sao limitadas e $L>|f(x)|$ e $L>|g(x)|$, tem-se:
+
+\begin{align*}
+	|h(x) - h(y)| &\le ||f(x)|\cdot|(g(x) + g(y))| + |g(y)|\cdot|(f(x) + f(y))|| \\
+	&< |L\cdot|(g(x) + g(y))| + L\cdot|(f(x) + f(y))||\\
+	&= L(||(g(x) + g(y))| + |(f(x) + f(y))||)
+\end{align*}
+
+Usando agora que $|f(x)-f(y)| < \frac{\beta}{2}$ e $|g(x)-g(y)| < \frac{\beta}{2}$ (devido a escolha de $x,y$), temos:
+
+\begin{align*}
+	|h(x) - h(y)| &< L(||(g(x) + g(y))| + |(f(x) + f(y))||)\\
+	&= L(|(g(x) + g(y))| + |(f(x) + f(y))|)\\
+	&\le L(\frac{\beta}{2} + \frac{\beta}{2})
+\end{align*}
+
+Por fim,
+
+\begin{align*}
+	|h(x) - h(y)| &<  L(\frac{\beta}{2} + \frac{\beta}{2}) \\
+	&= L\cdot\frac{\epsilon}{L}\\
+	&=\epsilon
+\end{align*}
+
+Sendo assim, dado qualquer $\epsilon > 0$, existe $\delta > 0$ tal que \mbox{$|x-y| < \delta \Rightarrow |h(x)-h(y)|<\epsilon$}. Isso mostra que a \funcao $h = f\cdot g$ \eh uniformemente \continua.
+
+\textbf{b}
+
+Tome $f,g:\R\rightarrow\R$ ambas dadas por $f(x) = g(x) = x$. Tome $h = f\cdot g$.
+
+Tanto $f$ quanto $g$ \sao uniformemente \continua s.
+
+Prova: Dado $\epsilon > 0$, tome $\delta = \epsilon$. Assim, temos que $|x - y| < \delta \Rightarrow |f(x) - f(y)| < \epsilon$, pois $|f(x) - f(y)| = |x - y| < \delta = \epsilon$.
+
+No entanto, $h = f \cdot g$ dada por $h(x) = x^2$ \nao \eh uniformemente \continua.
+
+Prova [por \contradicao]:
+
+Tome $\epsilon$ qualquer. Como $h$ uniformemente \continua temos que $\exists \delta > 0, \forall x,y \in \R, |x-y| < \delta \Rightarrow |f(x)-f(y)| < \epsilon$. Tome qualquer tal $\delta$.
+
+Tome $y = x + \frac{\delta}{2}$, temos que $|x-y| = \frac{\delta}{2} < \delta$. Assim, 
+
+\begin{align*}
+	|f(x) - f(y)| &= |x^2 - x^2 - x\delta - \frac{\delta^2}{4}| \\
+	&= |- x\delta - \frac{\delta^2}{4}| \\
+	&= |x\delta + \frac{\delta^2}{4}| \\
+	&\ge |x\delta| - |\frac{\delta^2}{4}| \\
+	&= |x|\delta - \frac{\delta^2}{4}
+\end{align*}
+
+No entando, se $|x| \ge  \frac{\epsilon + \frac{\delta^2}{4}}{\delta}$, temos \contradicao visto que:
+\begin{align*}
+	|f(x) - f(y)| &\ge |x|\delta - \frac{\delta^2}{4} \\
+	&\ge \epsilon + \frac{\delta^2}{4} - \frac{\delta^2}{4} \\
+	&= \epsilon
+\end{align*}
+
+Vale ressaltar que tal escolha de $x$ \eh sempre possivel vide o dominio.
+
+
+

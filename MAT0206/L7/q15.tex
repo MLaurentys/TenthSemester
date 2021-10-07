@@ -1,0 +1,84 @@
+\textbf{Q.15}
+
+Temos 
+\begin{align*}
+	V^a_b (f) &= \underset{P}{\sup}\{V(f;P); P \text{ \eh \particao de } [a,b]\} \\
+	&= \underset{P}{\sup}[\sum_{i=1}^n |f(t_i) - f(t_{i-1})|; \text{ com } P = \{t_0 < \ldots < t_n\}]
+\end{align*}
+
+Temos \tambem 
+\begin{align*}
+	\int_a^b|f'(x)|dx &= \underset{P}{\sup}\{s(|f'|;P); P \text{ \eh \particao de } [a,b]\} \\
+	&= \underset{P}{\inf}\{S(|f'|;P); P \text{ \eh \particao de } [a,b]\} \\
+	&= \underset{P}{\sup}\{\sum_{i=1}^n \inf (|f'([t_{i-1}, t_i])|)\cdot(t_i - t_{i-1}); \text{ com } P = \{t_0 < \ldots < t_n\}\} \\
+	&= \underset{P}{\inf}\{\sum_{i=1}^n \sup (|f'([t_{i-1}, t_i])|)\cdot(t_i - t_{i-1}); \text{ com } P = \{t_0 < \ldots < t_n\}\}
+\end{align*}
+
+Temos ainda, com $A \subset \R, a \in A\cap A'$, $x\in A, g:A\rightarrow\R$:
+\begin{align*}
+	g'(a) &= \lim_{x\rightarrow a} \frac{g(x)-g(a)}{x-a} \\
+	g'([A]) &= \{g'(a); a\in A\} \\
+	&= \{\lim_{x\rightarrow a} \frac{g(x)-g(a)}{x-a}; a \in A\}
+\end{align*}
+
+Fixando agora uma \particao qualquer $P = \{a=x_0 < \ldots < x_n = b\}$. Tem-se que:
+\begin{align*}
+	|f(x_i) - f(x_{i-1})| &= |\int_{x_{i-1}}^{x_i} f'(t)dt| \text{ (pois $f$ \continua -TFC}) \\
+	&\leq \int_{x_{i-1}}^{x_i} |f'(t)|dt \text{ (soma de modulos)}
+\end{align*}
+
+Isso mostra que:
+\begin{align*}
+	\sum_{i=1}^n |f(t_i) - f(t_{i-1})| &\leq \sum_{i=1}^n \int_{x_{i-1}}^{x_i}|f'(t)|dt \\
+	&= \int_{a}^{b}|f'(t)|dt
+\end{align*}
+
+Como $P$ qualquer, temos $V_a^b (f) \leq \int_{a}^{b}|f'(t)|dt$.
+
+Como $f'$ \eh \continua, dado $\epsilon$ qualquer, $\exists \delta$ tal que $x,y \in [a,b], |x-y| < \delta \Rightarrow |f'(x) - f'(y)| < \epsilon$.
+
+Fixando $\epsilon$, tome $\delta$ tal que $x,y \in [a,b], |x-y| < \delta \Rightarrow |f'(x) - f'(y)| < \epsilon$. Tome \tambem a \particao $P$ que separa em $n = \ceil{\frac{b-a}{\delta}}$ intervalos iguais. Isso garante que $P = \{a=x_0,\ldots,x_n=b\}$ \eh tal que todo \mbox{$i\in\N,i<n;|x_i - x_{i-1}| < \delta \Rightarrow x_{i-1} \leq x \leq x_i$}; $|f'(x_i) - f'(x)| < \epsilon$. Como $|f'(x_i) - f'(x)| \ge |f'(x_i)| - |f'(x)|$, temos \tambem que $|f'(x)| \le \epsilon + |f'(x_i)|$.
+
+Assim,
+\begin{align*}
+	\int_{x_{i-1}}^{x_i} |f'(t)|dt &\le |x_i-x_{i-1}|(|f'(x_i)| + \epsilon) \\
+	&= |\int_{x_{i-1}}^{x_i} f'(x_i)dt| + |x_i-x_{i-1}|\epsilon \\
+	&= |\int_{x_{i-1}}^{x_i} f'(t) + f'(x_i) - f'(t)dt| + |x_i-x_{i-1}|\epsilon \\
+	&\le |\int_{x_{i-1}}^{x_i} f'(t) dt|  + |\int_{x_{i-1}}^{x_i} f'(x_i) - f'(t)dt| + |x_i-x_{i-1}|\epsilon \\
+	&\le |\int_{x_{i-1}}^{x_i} f'(t) dt|  + |x_i-x_{i-1}|\epsilon + |x_i-x_{i-1}|\epsilon \\
+	&= |f(x_i) - f(x_{i-1})| + 2|x_i-x_{i-1}|\epsilon
+\end{align*}
+
+Portanto, tem-se que:
+\begin{align*}
+	\int_{a}^{b} |f'(t)|dt &\le \sum_{i=1}^{n} (|f(x_i) - f(x_{i-1})| + 2|x_i-x_{i-1}|\epsilon) \\
+	&= 2n\epsilon + \sum_{i=1}^{n} |f(x_i) - f(x_{i-1})| \\
+	&= 2n\epsilon + V_a^b (f) \\
+\end{align*}
+
+Como o $\epsilon$ \eh arbitrario, para qualquer valor $\alpha > 0$, $	\int_{a}^{b} |f'(t)|dt \le \alpha + V_a^b (f)$ e isso mostra que $\int_{a}^{b} |f'(t)|dt \le V_a^b (f)$.
+
+Sendo assim, temos finalmente que $\int_{a}^{b} |f'(t)|dt = V_a^b (f)$ para $f \in C^1([a,b])$.
+
+
+
+
+
+
+%Sendo assim, 
+%\begin{align*}
+%	|f'([t_{i-1}, t_i])| &= \{ | \lim_{x\rightarrow a} \frac{f(x)-f(a)}{x-a}|; x,a \in [t_{i-1}, t_i]\} \\
+%	| \lim_{x\rightarrow a} \frac{f(x)-f(a)}{x-a}| &\ge \frac{| \lim_{x\rightarrow a} f(x)-f(a)|}{t_i - t_{i-1}}
+%\end{align*}
+%
+%Logo, com $x,a \in [t_{i-1}, t_i]$ em cada inf:
+%\begin{align*}
+%	\int_a^b|f'(x)|dx &= \underset{P}{\sup}\{\sum_{i=1}^n \inf (| \lim_{x\rightarrow a} \frac{f(x)-f(a)}{x-a}|)\cdot(t_i - t_{i-1}); \text{ com } P = \{t_0 < \ldots < t_n\}\} \\
+%	&\ge \underset{P}{\sup}\{\sum_{i=1}^n \inf (\frac{| \lim_{x\rightarrow a} f(x)-f(a)|}{t_i - t_{i-1}})\cdot(t_i - t_{i-1}); \text{ com } P = \{t_0 < \ldots < t_n\}\} \\
+%	&= \underset{P}{\sup}\{\sum_{i=1}^n \inf (| \lim_{x\rightarrow a} f(x)-f(a)|); \text{ com } P = \{t_0 < \ldots < t_n\}\} \\
+%\end{align*}
+
+
+
+
+

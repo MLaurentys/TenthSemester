@@ -1,0 +1,28 @@
+\textbf{Q.3}
+
+Note que como a \funcao $f$ \eh \continua no intervalo $[a,b]$, ela \tambem \eh limitada. Sendo assim, ela \eh integravel.
+
+%\Eh fato \tambem que $|f|$ \eh integravel. pois se
+%
+%$$
+%\underset{P}{\sup}\{\sum_{i=1}^n \inf (f([t_{i-1}, t_i]))\cdot(t_i - t_{i-1})\} = \underset{P}{\inf}\{\sum_{i=1}^n \sup (f([t_{i-1}, t_i]))\cdot(t_i - t_{i-1})\}
+%$$
+
+Seja $\epsilon = \frac{f(x_0)}{2}$. Como $f$ \continua, $\exists \delta > 0$ tal que $\forall x \in (x_0 - \delta, x_0 + \delta)\cap [a,b]$ tem-se que $f(x) \in (f(x_0) - \epsilon, f(x_0) + \epsilon)$. Tome uma \particao $P_* = \{a=x_0 < \ldots < x_n=b\}$ com um dos intervalos $I_k = [x_{k-1}, x_k]$ tal que $I_k \subset (x_0 - \delta, x_0 + \delta)\cap [a,b]$.
+
+\begin{align*}
+	\int_a^b|f(x)|dx &= \underset{P}{\sup}\{s(|f|;P); P \text{ \eh \particao de } [a,b]\} \\
+	&\ge s(|f|;P_*) \\
+	&= \sum_{i=1}^n \inf (|f([x_{i-1}, x_i])|)\cdot(x_i - x_{i-1}) \\
+	&\ge \inf (|f([x_{k-1}, x_k])|)\cdot |[x_{k-1}, x_k]| \\
+	&\ge |(f(x_0) - \epsilon)|\cdot |[x_{k-1}, x_k]| \text{ * }\\
+	&= |\frac{f(x_0)}{2}|\cdot |[x_{k-1}, x_k]|
+\end{align*}
+
+* $\forall x \in [x_{k-1}, x_k]$ tem-se $f(x) \in (f(x_0) - \epsilon, f(x_0) + \epsilon)$, devido a escolha de $P$ mediante $I_k \subset (x_0 - \delta, x_0 + \delta)\cap [a,b]$.
+
+Como $f(x_0) \neq 0, |\frac{f(x_0)}{2}| > 0$. Notando que $[x_{k-1}, x_k] = (x_0 - \delta, x_0 + \delta)\cap [a,b] = I_i$ \eh um intervalo, temos que $|[x_{k-1}, x_k]| = x_k - x_{k-1}$, por \definicao. Alem disso, $x_k - x_{k-1} > 0$, pois, novamente, $I_k$ \eh intervalo. Dessa forma,
+
+$$
+\int_a^b|f(x)|dx \ge |\frac{f(x_0)}{2}|\cdot |[x_{k-1}, x_k]| > 0
+$$

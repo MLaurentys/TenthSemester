@@ -1,0 +1,23 @@
+\noindent\textbf{Q.1}
+
+\textbf{a)}
+
+Seja $I \subset \N$ o conjunto dos indices de \seqn{x} tais que $\sqrt{x_n} \leq \frac{1}{n}$.
+
+Tomando $n \in \N$, se $n\in I$, \entao $\frac{\sqrt{x_n}}{n} \leq \frac{1}{n^2}$, pois $\sqrt{x_n} \leq \frac{1}{n}$. Caso $n \notin I$, \entao $\frac{\sqrt{x_n}}{n} < \sqrt{x_n}^2 = x_n$. Sabemos \entao que:
+
+$$\series{\N}\frac{\sqrt{x_i}}{i} = \series{\N \setminus I}\frac{\sqrt{x_i}}{i} + \series{I}\frac{\sqrt{x_i}}{i} \leq \series{I}\frac{1}{i^2} + \series{\N\setminus I}x_i$$
+
+\Eh dado que $\series{\N}x_i$ converge. A \serie $\series{\N}\frac{1}{i^2}$ \eh uma PG com \razao menor que 1 e, por isso, converge (ja foi visto em aula). A soma de \serie s convergentes \tambem converge. Assim, tome \series{\N} $(x_i + \frac{1}{i^2})$. Notando que \series{\N} $\frac{\sqrt{x_i}}{i} \leq$ \series{\N} $(x_i + \frac{1}{i^2})$, podemos afirmar que $\frac{\sqrt{x_i}}{i}$ converge pelo \criterio de \comparacao $(i)$.
+
+\textbf{b)}
+
+Seja \liminf{n\in\N} $y_n = \alpha > 0$. Tome $\epsilon$ tal que $\alpha - \epsilon > 0$ e seja $\beta = \alpha - \epsilon$. Existe apenas um numero finito de elementos da \sequencia \seqn{y} menores que $\beta$ pela \definicao de lim inf. Seja $I$ o conjunto dos indices $n$ tais que $y_n > \beta$. 
+
+Se $\beta \ge 1$, \entao $\forall i \in I, \frac{x_i}{y_i} \leq x_i$. Sendo assim, pelo \criterio da \comparacao ($i$), a \serie \series{I} $\frac{x_i}{y_i}$ converge. Como \series{\N \setminus I} $\frac{x_i}{y_i}$ \eh soma finita, \entao \series{\N} $\frac{x_i}{y_i}$ converge.
+
+Se $\beta < 1$, \entao $\forall i \in I, \frac{x_1}{y_i} \leq \frac{x_1}{\beta}$. Portanto, tem-se que:
+
+$$\series{I} \frac{x_i}{y_i} \leq \series{I} \frac{x_i}{\beta} = \frac{1}{\beta} \series{I} x_n \leq \frac{1}{\beta} \series{\N} x_n$$
+
+Como $\series{\N} x_n$ converge, \entao $\series{I} \frac{x_i}{y_i}$ \tambem converge. Novamente, como \series{\N \setminus I} $\frac{x_i}{y_i}$ \eh soma finita, \entao \series{\N} $\frac{x_i}{y_i}$ converge.

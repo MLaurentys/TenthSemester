@@ -1,0 +1,102 @@
+\textbf{Q.7}
+
+\textbf{a)} Mostrar que 
+$$\exists \epsilon > 0 \text{ tal que } \forall \delta > 0, \exists x,y \in (0,+\infty) \text{ com } |x-y| < \delta \text{ e } |f(x) - f(y)| > \epsilon$$
+
+Fixando $\epsilon = 1$. Tomando $\delta > 0$ qualquer.
+
+Caso $\delta \ge \frac{2}{\pi}$
+
+Toma-se $x=\frac{1}{2}$ e $y=\frac{1}{10}$. Dessa forma, $|x-y| = |0.5-0.1| = 0.4 < \frac{2}{\pi}$, porem, $|f(x) - f(y)| = |\sin(2) - \sin(10)| \approx 1.45 > 1$.
+
+Caso $\delta < \frac{2}{\pi}$:
+
+Fixando $k$ algum inteiro. Tomar $x$ da forma $\frac{1}{2\times\pi\times k - \frac{\pi}{2}}$ de forma que \mbox{$\frac{1}{x} = 2\pi k - \frac{\pi}{2}$} e, assim, $\sin(\frac{1}{x}) = -1$. Tomar $y$ da forma $\frac{1}{2\times\pi\times k + \frac{\pi}{2}}$ de forma que $\frac{1}{y} = 2\pi k + \frac{\pi}{2}$ e, assim, $\sin(\frac{1}{y}) = 1$.
+
+Para que $|x-y| < \delta$, temos:
+\begin{align*}
+|\frac{1}{2\pi k - \frac{\pi}{2}} + \frac{1}{2\pi k + \frac{\pi}{2}}| &< \delta \\
+|\frac{2\pi k - \frac{\pi}{2} + 2\pi k - \frac{\pi}{2}}{(2\pi k - \frac{\pi}{2})\times(2\pi k + \frac{\pi}{2})}| &< \delta \\
+|\frac{4\pi k}{(2\pi k)^2 - (\frac{\pi}{2})^2}| &< \delta
+\end{align*}
+
+Fixando agora $k \in \N, k>0$, tem-se:
+\begin{align*}
+	4\pi k &< \delta\times (2\pi k)^2 - \delta\times(\frac{\pi}{2})^2 \\
+	0 &< 4\delta\pi^2 k^2 - 4\pi k - \frac{\delta\pi^2}{4} 
+\end{align*}
+
+Considere a \funcao $\f(k) = 4\delta\pi^2 k^2 - 4\pi k - \frac{\delta\pi^2}{4}$. As \raizes da \funcao \sao:
+\begin{align*}
+	k_1 &= \frac{2 + \sqrt{4 - \delta^2\pi^2}}{4\delta\pi}\\
+	k_2 &= \frac{2 - \sqrt{4 - \delta^2\pi^2}}{4\delta\pi}
+\end{align*}
+
+Como $\delta < \frac{2}{\pi}$, as duas \raizes \sao reais. Como a \funcao descreve um parabola com abertura para cima, para satisfazer a \inequacao $0 < 4\delta\pi^2 k^2 - 4\pi k - \frac{\delta\pi^2}{4}$, pode-se ter que $k < k_2$ ou que $k > k_1$. Sendo assim, dado $\delta$ qualquer, \eh possivel escolher $k$ de forma que $|x-y| < \delta$ e, alem disso, $|f(x)-f(y)| = |-1 + 2| = 2 > 1 = \epsilon$.
+
+Juntamente ao outro caso, \entao, temos que $\f :(0,+\infty)\rightarrow\R)$ definida por \mbox{$\f (x) = \sin (\frac{1}{x})$} \nao \eh uniformemente \continua.
+
+\textbf{b)}
+
+Usando que $h:\R\rightarrow\R$ dada por $h(x) = \sin(x)$ \eh \diferenciavel em todos os pontos do \dominio e que sua derivada \eh dada por $\cos(x)$. Vimos em aula que \diferenciavel implica \continua.
+
+\Eh notavel que se $\alpha\ge 1$ ou $\alpha \le -1$, \entao $|\sin(\alpha)| \le |\alpha|$, pois $|sin(\alpha)| \le 1$ sempre.
+
+Se $\alpha = 0$, $|sin(\alpha)| = sin(0) = 0 = \alpha \le |\alpha|$.
+
+Tome \entao $\alpha \in (0,1)$. Como $sin(\alpha)$ \eh \continua no intervalo $[0,\alpha]$ e \diferenciavel no intervalo $(0,\alpha)$, \entao $\exists \beta \in (0, \alpha)$, pelo TVM, tal que \mbox{$\sin'(\beta) = \frac{\sin(\alpha) - \sin(0)}{\alpha - 0} \iff \cos(\beta) = \frac{\sin(\alpha)}{\alpha}$}. Novamente usando que $\forall \beta \in \R, \cos(\beta) \leq 1$, $\cos(\beta) = \frac{\sin(\alpha)}{\alpha} \iff  \frac{\sin(\alpha)}{\alpha} \le 1$, mostrando que $sin(\alpha) \le \alpha$ e $|\sin(\alpha)| \le |\alpha|$.
+
+Tome \entao $\alpha \in (-1,0)$. Como $sin(\alpha)$ \eh \continua no intervalo $[\alpha,0]$ e \diferenciavel no intervalo $(\alpha,0)$, \entao $\exists \beta \in (\alpha, 0)$, pelo TVM, tal que \mbox{$\sin'(\beta) = \frac{\sin(0) - \sin(\alpha)}{0-\alpha} \iff \cos(\beta) = \frac{-\sin(\alpha)}{-\alpha}$}. Novamente usando que $\forall \beta \in \R, \cos(\beta) \leq 1$, $\cos(\beta) = \frac{\sin(\alpha)}{\alpha} \iff  \frac{\sin(\alpha)}{\alpha} \le 1$, mostrando que $sin(\alpha) \le \alpha$ e $|\sin(\alpha)| \le |\alpha|$.
+
+Sendo assim, $\forall \alpha \in \R, |sin(\alpha)| \le |\alpha|$.
+\\
+\hrule
+\vspace{1cm}
+
+Considere $a > 0$ qualquer. Dado $\epsilon > 0$ qualquer.
+
+Considere $x,y\in [a,+\infty)$ tais que
+$
+|g(x) - g(y)| < \epsilon
+$, que significa que \mbox{
+$
+|\sin(\frac{1}{x}) - \sin(\frac{1}{y})| < \epsilon
+$}. Usando a indentidade trigonometrica $\sin(w) - \sin(z) = 2\cos(\frac{w+z}{2})\sin(\frac{w-z}{2})$, tem-se que
+$
+|2\cos(\frac{x+y}{2xy})\sin(\frac{x-y}{2xy})| < \epsilon$ \entao 
+$|\cos(\frac{x+y}{2xy})\sin(\frac{x-y}{2xy})| < \frac{\epsilon}{2}
+$. \Eh claro que \mbox{$\forall \alpha \in \R, \cos(\alpha) \leq 1$}, portanto, se $|\sin(\frac{x-y}{2xy})| < \frac{\epsilon}{2}$, \entao $|\cos(\frac{x+y}{2xy})\sin(\frac{x-y}{2xy})| < \frac{\epsilon}{2}$. Assim, basta que $\exists \delta, |x-y| < \delta \Rightarrow |\sin\frac{x-y}{2xy}| < \frac{\epsilon}{2}$ para que a \funcao $g$ seja uniformemente \mbox{\continua.} Como mostrado acima, \mbox{$\forall \alpha \in \R, |sin(\alpha)| \le |\alpha|$}, logo, $|\frac{x-y}{2xy}| < \frac{\epsilon}{2} \Rightarrow |\sin\frac{x-y}{2xy}| < \frac{\epsilon}{2}$. 
+
+Assim, basta que $\exists \delta, |x-y| < \delta \Rightarrow |\frac{x-y}{xy}| < \epsilon$. Como $x \ge a$ e $y \ge a$, \entao $|\frac{x-y}{xy}| \le |\frac{x-y}{a^2}|$. Finalmente, basta que:
+\begin{align*}
+	\exists \delta, |x-y| < \delta &\Rightarrow |\frac{x-y}{a^2}| < \epsilon \\
+	&\iff \\
+	\exists \delta, |x-y| < \delta &\Rightarrow |x-y| < a^2\epsilon \\
+	&\iff \\
+	\delta &\le a^2\epsilon
+\end{align*}
+
+Sendo assim, tomar $\delta = a^2\epsilon$ garante que $\forall x,y \in [a, +\infty)$, se $|x-y|<\delta$ \entao $|g(x) - g(y)| < \epsilon$.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

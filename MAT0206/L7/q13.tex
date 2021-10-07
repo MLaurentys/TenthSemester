@@ -1,0 +1,78 @@
+\textbf{Q.13}
+
+Como visto em 12, $\forall x \in [a,b], \exists t \in [0,1]; f(x)\le tf(a) + (1-t)f(b)$. Isso mostra que a \funcao \eh limitada superiorment e  $\forall x \in [a,b], f(x) \le \max(f(a), f(b))$.
+
+Tome $c \in (\frac{b-a}{2},b)$. Como $d$ convexa em $[a,c], \frac{b-a}{2} \in [a,c]$,
+$$
+\frac{b-a}{2} = (1-t)a + tc
+$$
+Claro que $t = \frac{b-a}{2(c-a)}$, pois:
+\vspace{-0.5cm}
+\begin{align*}
+	(1-t)a + tc &= \frac{2ca - 2a^2 -ba + a^2 + bc - 	ac}{2(c-a)}\\
+	&=\frac{ca - a^2 -ba + bc}{2(c-a)}\\
+	&=\frac{(c-a)(a + b)}{2(c-a)}\\
+	&= \frac{a+b}{2}
+\end{align*}
+
+Logo,
+\begin{align*}
+	f(\frac{a-b}{2}) &\leq tf(c) + (1-t)f(a)\\
+	&= \frac{b-a}{2(c-a)}f(c) + \frac{2(c-a) - (b-a)}{2(c-a)}f(a)
+\end{align*}
+
+Isolando $f(c)$, tem-se:
+\begin{align*}
+	f(c) &\ge \frac{f(\frac{b-a}{2}) - \frac{2(c-a) - (b-a)}{2(c-a)}f(a)}{\frac{b-a}{2(c-a)}} \\
+	&= \frac{2(c-a)}{b-a}f(\frac{b-a}{2}) - \frac{2(c-a) - (b-a)}{b-a}f(a)\\
+	&= \frac{2(c-a)}{b-a}f(\frac{b-a}{2}) - \frac{2c -a - b}{b-a}f(a)\\
+	&\ge -2|f(\frac{b-a}{2})| - \frac{2c -a - b}{b-a}f(a)\\
+	&\ge -2|f(\frac{b-a}{2})| - |\frac{2c -a - b}{b-a}||f(a)|\\
+	&\ge -2|f(\frac{b-a}{2})| - |\frac{b -a}{b-a}||f(a)| \\
+	&= -2|f(\frac{b-a}{2})| - |f(a)|
+\end{align*}
+
+Sendo assim, $\forall x\in[\frac{b+a}{2}, b], f(x)$ \eh limitada inferiormente \tambem. Pode-se usar processo analogo para mostrar que isso \tambem vale para $x\in[a,\frac{b+a}{2}]$. Isso mostra que $f(x)$ \eh limitada. Assim, $\exists L \ge |f(x)|; x\in [a,b]$.
+
+Tomando agora $x < y \in [a,b]$, temos:
+$x = (1-t)a + ty$, com $t = \frac{x-a}{y-a}$. Tem-se
+\begin{align*}
+	f(x) - f(y) &\leq (1-t)f(a) + tf(y) - f(y) \\
+	&= (1-t)(f(a) - f(y))\\
+	&= \frac{y-x}{y-a}(f(a) - f(y))\\
+	&\leq \frac{2L(y-x)}{y-a}
+\end{align*}
+
+Dado $\epsilon > 0$. Tome $y \in (a,b)$ e seja $\beta = y-a$. Note que se fixarmos $\delta = \frac{\epsilon\beta}{4L}$, \entao $|y-x|<\delta \Rightarrow |f(y)-f(x)|<\epsilon$, pois $|f(x)-f(y)| \leq |\frac{2L(y-x)}{y-a}| \leq |\frac{2L\delta}{\beta}|$ e, pela escolha de $\delta$, $|\frac{2L\delta}{\beta}| = |\frac{2L\epsilon\beta}{4L\beta}| = \frac{\epsilon}{2}$. Sendo assim, toda \funcao convexa em $I = [a,b]$ \eh \continua em $(a,b)$.
+
+\vspace{1cm}
+\hrule
+\vspace{1cm}
+
+A \funcao $f:[0,1]\rightarrow\R$ dada por
+$f(x) = \begin{cases*}
+	0, \text{se } x\in (0,1) \\
+	1, \text{cc}
+\end{cases*}$ \eh convexa em $[0,1]$, mas \nao \eh continua nos pontos $x=0$ e $x=1$. Tome $x,y,t \in [0,1]$ e considere $f(tx + (1-t)y)$. Sem perda de generalidade, suponha $x \le y$.
+
+Se $x = y$, $f(tx + (1-t)y) = f(x) = tf(x) + (1-t)f(x) = tf(x) + (1-t)f(y)$.
+
+Se $tx + (1-t)y \in (0,1)$, $f(tx + (1-t)y) = 0$. Como $\forall x \in [0,1], f(x) \ge 0$, \entao $f(tx + (1-t)y) \le tf(x) + (1-t)f(y)$.
+
+Se $tx + (1-t)y = 0$, \entao $t = 1, x = 0$, caso contrario, $1-t \neq 0, y \neq 0 \Rightarrow (1-t)y > 0 \Rightarrow tx + (1-t)y>0$. Assim, $f(tx + (1-t)y) = f(0) = 1\times f(x) + 0 \times f(y) = tf(x) + (1-t)f(y)$.
+
+
+Se $tx + (1-t)y = 1$, \entao $t = 0, y = 1$. $f(tx + (1-t)y) = f(1) = 0\times f(x) + 1 \times f(1) = tf(x) + (1-t)f(y)$.
+
+Sendo assim, ela \eh convexa.
+
+Considere a \sequencia \seqn{x} com $x_n = \frac{1}{n}$. Ja foi visto que \limi{x_n}{0}. No entanto, pela \definicao da $f$, $\forall n \in \N, f(x_n) = 0$ e, por isso, \limi{f(x_n)}{0} e $0\neq 1 = f(0)$.
+
+Considere, agora, a \sequencia \seqn{x} com $x_n = \frac{n-1}{n}$. Ja foi visto que \limi{x_n}{1}. No entanto, pela \definicao da $f$, $\forall n \in \N, f(x_n) = 0$ e, por isso, \limi{f(x_n)}{0} e $0\neq 1 = f(0)$.
+
+Sendo assim, $f$ \nao \eh \continua nem em $x=0$ nem em $x=1$.
+
+
+
+
+

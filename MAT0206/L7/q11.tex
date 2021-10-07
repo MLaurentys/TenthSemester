@@ -1,0 +1,53 @@
+\textbf{Q.11}
+
+Note que a \funcao $\f$ \eh limitada, pois $\f(a)$ e $\f(b)$ \sao cotas superiores ou inferiores. Considere a \particao $P_n$ de $[a,b]$ em $n > 0$ intervalos de tamanhos iguais. Isto \eh:
+$$
+P_n = \{a < a + \frac{b-a}{n} < \ldots < a + (n-1)\frac{b-a}{n} < b\}
+$$
+
+Define-se $x_i$ por $x_i = a + i\frac{b-a}{n}$ para $i \in \N\cup {0}, i \leq n$. Tambem se definem $I_i$ da forma $I_i = [x_{i-1}, x_i]$ para $i \in \N, i \leq n$.
+
+
+Subtraindo a soma inferior da supereior:
+
+\begin{align*}
+	S(\f,P_n) - s(\f,P_n) &= \sum_{i=1}^{n} \sup(\f(I_i))\times|I_i| - \sum_{i=1}^{n} \inf(\f(I_i))\times|I_i|
+\end{align*}
+
+Considerando $\f$ decrescente, $\sup(\f(I_i)) = f(x_{i-1})$ e $\inf(\f(I_i)) = f(x_i)$. Assim, 
+
+\begin{align*}
+	S(\f,P_n) - s(\f,P_n) &= \sum_{i=1}^{n} \f (x_{i-1})\frac{b-a}{n} - \sum_{i=1}^{n} \f (x_i)\frac{b-a}{n} \\
+	&= \frac{b-a}{n}(\sum_{i=1}^{n}(\f (x_{i-1}) - \f (x_i))) \\
+	&= \frac{b-a}{n}(\f (x_0) - \f (x_1) + \f (x_1) - \f (x_2) + \ldots + \f(x_{n-1}) - \f(x_n)) \\
+	&= \frac{b-a}{n}(f(x_0) - f(x_n)) \\
+	&= \frac{b-a}{n}(f(a)-f(b)) \\
+\end{align*}
+
+Tome $\epsilon > 0$ qualquer. Tomando $n \in \N$, o tamanho da \particao, tal que \mbox{$n > \frac{b-a}{\epsilon}(f(a)-f(b))$}, \entao a \subtracao da soma inderior da supereior sera menor que $\epsilon$, visto:
+
+$$
+S(\f,P_n) - s(\f,P_n) = \frac{b-a}{n}(f(a)-f(b)) < \frac{b-a}{\frac{b-a}{\epsilon}(f(a)-f(b))}(f(a)-f(b)) = \epsilon
+$$
+
+Sendo assim, toda \funcao monotona descrescente \eh integravel, pelo \criterio de integrabilidade visto em aula.
+
+Considerando $\f$ crescente, $\sup(\f(I_i)) = f(x_i)$ e $\inf(\f(I_i)) = f(x_{i-1})$. Assim, 
+
+\begin{align*}
+	S(\f,P_n) - s(\f,P_n) &= \sum_{i=1}^{n} \f (x_i)\frac{b-a}{n} - \sum_{i=1}^{n} \f (x_{i-1})\frac{b-a}{n} \\
+	&= \frac{b-a}{n}(\sum_{i=1}^{n}(\f (x_i) - \f (x_{i-1}))) \\
+	&= \frac{b-a}{n}(-\f (x_0) + \f (x_1) - \f (x_1) + \f (x_2) - \ldots - \f(x_{n-1}) + \f(x_n)) \\
+	&= \frac{b-a}{n}(f(x_n) - f(x_0)) \\
+	&= \frac{b-a}{n}(f(b)-f(a)) \\
+\end{align*}
+
+Tome $\epsilon > 0$ qualquer. Tomando $n \in \N$, o tamanho da \particao, tal que \mbox{$n > \frac{b-a}{\epsilon}(f(b)-f(a))$}, \entao a \subtracao da soma inderior da supereior sera menor que $\epsilon$, visto:
+
+$$
+S(\f,P_n) - s(\f,P_n) = \frac{b-a}{n}(f(b)-f(a)) < \frac{b-a}{\frac{b-a}{\epsilon}(f(b)-f(a))}(f(b)-f(a)) = \epsilon
+$$
+
+Sendo assim, toda \funcao monotona crescente \eh integravel, pelo \criterio de integrabilidade visto em aula.
+
+

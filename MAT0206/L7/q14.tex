@@ -1,0 +1,95 @@
+\textbf{Q.14}
+
+\textbf{a)}
+
+Usando a metrica habitual $d(x, y) = |y-x|, \forall x,y \in \R$. Assim, usarei que \mbox{$|f(y)-f(x)| \le K|y-x|$}. O valor $K$ pode ser qualquer constante lipshitz de $f$.
+
+Dada uma \particao $P = \{a=t_0 < t_1< \ldots < t_n = b\}$ qualquer. A \variacao \eh \mbox{$V(f;P) = \sum_{i = 1}^n|f(t_i) - f(t_{i-1})|$}. Como \mbox{$|f(y)-f(x)| \le K|y-x|$}, \entao tem-se que $\sum_{i = 1}^n|f(t_i) - f(t_{i-1})| \leq K\times\sum_{i = 1}^n|t_i - t_{i-1}| = K\times(|t_1 - t_0| + |t_2 -t_1| + \ldots + |t_n - t_{n-1}|)$. Note que $|t_n - t_0| = |t_1 - t_0| + |t_2 -t_1| + \ldots + |t_n - t_{n-1}|$.
+
+Temos \entao, $V(f;P) \leq K\times (t_n - t_0) = K(b-a)$. Isso mostra que $\forall P$ \particao de $[a,b]$, $\underset{P}{sup}\{V(f;P); P \text{ \particao de }[a,b]\}$ \eh finito.
+
+\textbf{b)}
+
+Dada uma \particao $P = \{a=t_0 < t_1< \ldots < t_n = b\}$ qualquer. Como $f$ monotona, \entao $f$ limitada, pois $f(a),f(b)$ \sao cotas superiores ou inferiores.
+
+Supondo que $f$ seja crescente.
+
+$V(f;P) = \sum_{i = 1}^n|f(t_i) - f(t_{i-1})| = \sum_{i = 1}^n(f(t_i) - f(t_{i-1}))$, pois $\forall i, 1 \le i \le n$ tem-se $f(t_i) \ge f(t_{i-1})$. Sendo assim,
+$$V(f;P) = f(t_1) - f(t_0) + f(t_2) - f(t_1) + \ldots + f(t_n) - f(t_{n-1}) = f(t_n) - f(t_0)<\infty$$
+Supondo que $f$ seja decrescente.
+
+$V(f;P) = \sum_{i = 1}^n|f(t_i) - f(t_{i-1})| = \sum_{i = 1}^n(f(t_{i-1}) - f(t_i))$, pois $\forall i, 1 \le i \le n$ tem-se $f(t_{i-1} \ge f(t_i))$. Sendo assim,
+$$V(f;P) = f(t_0) - f(t_1) + f(t_1) - f(t_2) + \ldots + f(t_{n-1}) - f(t_n) = f(t_0) - f(t_n)<\infty$$
+Temos \entao que tanto monotonas crescentes quanto decrescentes tem \variacao limitada.
+
+\textbf{c)}
+
+Considere $f:[a,b]\rightarrow\R, g:[a,b]\rightarrow\R, h:[a,b]\rightarrow\R$ com $h(x) = f(x) + g(x)$. Tome $V(h;P) = \sum_{i = 1}^n|h(t_i) - h(t_{i-1})| = \sum_{i = 1}^n|f(t_i) + g(t_i) - f(t_{i-1}) - g(t_{i-1})|$. Pela desigualdade triangular, provada anteriormente, 
+$$\sum_{i = 1}^n|[f(t_i) - f(t_{i-1})] + [g(t_i) - g(t_{i-1})]| \leq
+\sum_{i = 1}^n(|f(t_i) - f(t_{i-1})| + |g(t_i) - g(t_{i-1})|)$$
+
+Note \mbox{$\sum_{i = 1}^n(|f(t_i) - f(t_{i-1})| + |g(t_i) - g(t_{i-1})|) = \sum_{i = 1}^n|f(t_i) - f(t_{i-1})| + \sum_{i = 1}^n |g(t_i) - g(t_{i-1})|$}. Sendo assim, $V(h;P) \leq \sum_{i = 1}^n|f(t_i) - f(t_{i-1})| + \sum_{i = 1}^n |g(t_i) - g(t_{i-1})| < \infty$, pois tanto $\sum_{i = 1}^n|f(t_i) - f(t_{i-1})| < \infty$ quanto $\sum_{i = 1}^n |g(t_i) - g(t_{i-1})| < \infty$.
+
+Considere $f:[a,b]\rightarrow\R, g:[a,b]\rightarrow\R, h:[a,b]\rightarrow\R$ com $h(x) = f(x)g(x)$. Considere:
+\begin{align*}
+	V(h;P) &= \sum_{i = 1}^n|h(t_i) - h(t_{i-1})| \\
+	&= \sum_{i = 1}^n|f(t_i)g(t_i) - f(t_{i-1})g(t_{i-1})| \\
+	&= \sum_{i = 1}^n|f(t_i)g(t_i) - f(t_i)g(t_{i-1}) + f(t_i)g(t_{i-1}) - f(t_{i-1})g(t_{i-1})| \\
+	&= \sum_{i = 1}^n|f(t_i)(g(t_i) - g(t_{-1})) + g(t_{i-1})(f(t_i) - f(t_{i-1}))| \\
+	&\leq \sum_{i = 1}^n(|f(t_i)(g(t_i) - g(t_{-1}))| + |g(t_{i-1})(f(t_i) - f(t_{i-1}))|) \\
+	&= \sum_{i = 1}^n(|f(t_i)||(g(t_i) - g(t_{-1}))| + |g(t_{i-1})||(f(t_i) - f(t_{i-1}))|)
+\end{align*}
+
+Usando que \variacao limitada em $[a,b]$ implica \funcao limitada.
+
+\vspace{1cm}
+\hrule
+\vspace{1cm}
+
+Prova:
+
+Tomando $x \in [a,b]$ e uma \particao $P$ de $[a,b]$ com $P = \{x_0 < \ldots < n_n\}$, tem-se
+\begin{align*}
+	|f(x)| &= |f(x)| + |f(a)| - |f(a)| \\
+	&\leq |f(a)| + |f(x) - f(a)| \text{ (desigualdade triangular da \subtracao)} \\
+	&\leq |f(a)| + V_a^b(f) \\
+	&< \infty
+\end{align*}
+Se $x \in (a,b)$, a penultima desigualdade \eh valida pois $|f(x) - f(a)| \leq \sup_P\{V(f;P) | P \text{ \particao de } [a,b]\}$,
+ja que pode-se tomar \particao $P = \{a < x <b\}$ e $V(f;P) = |f(b) - f(x)| + |f(x) - f(a)| \ge |f(x) - f(a)|$. Note que se $x = a$ ou $x=b$ a resposta \eh igualmente simples. Basta tomar a \particao $P=\{a < x_0 < b\}, x_0 \in (a,b)$ e notar que $|f(x) - f(a)| \leq |f(b) - f(x_0)| + |f(x_0) - f(a)|$, independentemente do caso.
+
+\vspace{1cm}
+\hrule
+\vspace{1cm}
+
+
+Como $f$ limitada, $\exists L$ tal que $\forall i \in \N, i \leq n$ tem-se $f(t_i) < L$ e $g(t_i) < L$. Seguindo \entao que:
+\begin{align*}
+	V(h;P) &\leq \sum_{i = 1}^n(|f(t_i)||(g(t_i) - g(t_{-1}))| + |g(t_{i-1})||(f(t_i) - f(t_{i-1}))|) \\
+	&< L\times ( \sum_{i = 1}^n|g(t_i) - g(t_{-1})| + \sum_{i = 1}^n|f(t_i) - f(t_{-1})|)
+\end{align*}
+Da mesma forma, como $f,g$ \sao de \variacao limitada, $\exists M$ tal que $ \sum_{i = 1}^n|g(t_i) - g(t_{-1})| < M$ e $\sum_{i = 1}^n|f(t_i) - f(t_{-1})| < M$, segue,finalmente que:
+
+$$
+V(h;P) < 2\times LM < \infty
+$$
+
+Sendo assim, $h = fg$ \eh de \variacao limitada. 
+
+Tome, agora $h=|f|$ e alguma \particao $P$ de $[a,b]$.
+
+\begin{align*}
+		V(h;P) &= \sum_{i = 1}^n|h(t_i) - h(t_{i-1})| \\
+		&= \sum_{i = 1}^n||f(t_i)| - |f(t_{i-1})|| \\
+		&\leq \sum_{i = 1}^n|f(t_i) - f(t_{i-1})| \\
+		&< \infty
+\end{align*}
+
+Note que $||f(t_i)| - |f(t_{i-1})|| \leq |f(t_i) - f(t_{i-1})| $ e isso \eh a desigualdade triangular da \subtracao que ja foi provada anteriormente. Dessa forma, $h = |f|$ \eh de \variacao limitada. 
+
+
+
+
+
+
+

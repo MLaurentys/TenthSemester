@@ -1,0 +1,65 @@
+\textbf{Q.4}
+
+\textbf{a)}
+
+Usando a metrica habitual $d(x, y) = |y-x|, \forall x,y \in \R$. Tome $f:X\rightarrow\R$ \funcao Lipschitz. Assim, dados $x,y\in X$, usarei que \mbox{$|f(y)-f(x)| \le K|y-x|$}. O valor $K$ pode ser qualquer constante lipshitz de $f$.
+
+Dada uma \particao $P = \{a=t_0 < t_1< \ldots < t_n = b\}$ qualquer. A \variacao \eh \mbox{$V(f;P) = \sum_{i = 1}^n|f(t_i) - f(t_{i-1})|$}. Como \mbox{$|f(y)-f(x)| \le K|y-x|$}, \entao tem-se que $\sum_{i = 1}^n|f(t_i) - f(t_{i-1})| \leq K\times\sum_{i = 1}^n|t_i - t_{i-1}| = K\times(|t_1 - t_0| + |t_2 -t_1| + \ldots + |t_n - t_{n-1}|)$. Note que $|t_n - t_0| = |t_1 - t_0| + |t_2 -t_1| + \ldots + |t_n - t_{n-1}|$.
+
+Temos \entao, $V(f;P) \leq K\times (t_n - t_0) = K(b-a)$. Isso mostra que $\forall P$ \particao de $[a,b]$ tem-se $V(f;P) <  K(b-a)$, logo $\underset{P}{sup}\{V(f;P); P \text{ \particao de }[a,b]\}$ \eh finito, pois $ K(b-a)$ \eh cota superior.
+
+Como toda $f \in C^1$ \eh Lipschitz, \entao toda $f\in C^1$ \eh de \variacao limitada.
+
+\textbf{b)}
+
+Fixando agora uma \particao qualquer $P = \{a=x_0 < \ldots < x_n = b\}$ de $[a,b]$. Tem-se que:
+\begin{align*}
+	|f(x_i) - f(x_{i-1})| &= |\int_{x_{i-1}}^{x_i} f'(x)dx| \text{ (pois $f$ \continua -TFC}) \\
+	&\leq \int_{x_{i-1}}^{x_i} |f'(x)|dx \text{ (soma de modulos)}
+\end{align*}
+
+Isso mostra que:
+\begin{align*}
+	\sum_{i=1}^n |f(x_i) - f(x_{i-1})| &\leq \sum_{i=1}^n \int_{x_{i-1}}^{x_i}|f'(x)|dx \\
+	&= \int_{a}^{b}|f'(x)|dx
+\end{align*}
+
+Como $P$ qualquer, temos $V_a^b (f) \leq \int_{a}^{b}|f'(x)|dx$.
+
+Como $f'$ \eh \continua, dado $\epsilon$ qualquer, $\exists \delta$ tal que $x,y \in [a,b], |x-y| < \delta \Rightarrow |f'(x) - f'(y)| < \epsilon$.
+
+Fixando $\epsilon$, tome $\delta$ tal que $x,y \in [a,b], |x-y| < \delta \Rightarrow |f'(x) - f'(y)| < \epsilon$. Tome \tambem a \particao $P$ que separa em $n = \ceil{\frac{b-a}{\delta + 1}}$ intervalos iguais. Isso garante que $P = \{a=x_0<\ldots<x_n=b\}$ \eh tal que todo \mbox{$i\in\N,i\leq n$} temos $|x_i - x_{i-1}| < \delta$ assim, tem-se que $\forall x; x_{i-1} \leq x \leq x_i$; $|f'(x_i) - f'(x)| < \epsilon$.
+
+Como $|f'(x_i) - f'(x)| \ge |f'(x_i)| - |f'(x)|$, temos \tambem que $|f'(x)| - |f'(x_i)| < \epsilon$ e que $|f'(x)| < \epsilon + |f'(x_i)|$.
+
+Assim,
+\begin{align*}
+	\int_{x_{i-1}}^{x_i} |f'(x)|dx &\le |[x_i,x_{i-1}]|(|f'(x_i)| + \epsilon) \\
+	&= |\int_{x_{i-1}}^{x_i} f'(x_i)dx| + |[x_i,x_{i-1}]|\epsilon \\
+	&= |\int_{x_{i-1}}^{x_i} f'(x) + f'(x_i) - f'(x)dx| + |[x_i,x_{i-1}]|\epsilon \\
+	&\le |\int_{x_{i-1}}^{x_i} f'(x) dx|  + |\int_{x_{i-1}}^{x_i} f'(x_i) - f'(x)dx| + |[x_i,x_{i-1}]|\epsilon \\
+	&\le |\int_{x_{i-1}}^{x_i} f'(x) dx|  + |[x_i,x_{i-1}]|\epsilon + |[x_i,x_{i-1}]|\epsilon \\
+	&= |f(x_i) - f(x_{i-1})| + 2|[x_i,x_{i-1}]|\epsilon
+\end{align*}
+
+Portanto, tem-se que:
+\begin{align*}
+	\int_{a}^{b} |f'(x)|dx &\le \sum_{i=1}^{n} (|f(x_i) - f(x_{i-1})| + 2|x_i-x_{i-1}|\epsilon) \\
+	&= 2n\epsilon + \sum_{i=1}^{n} |f(x_i) - f(x_{i-1})| \\
+	&= 2n\epsilon + V_a^b (f) \\
+\end{align*}
+
+Como o $\epsilon$ \eh arbitrario, para qualquer valor $\alpha > 0$, $	\int_{a}^{b} |f'(x)|dx \le \alpha + V_a^b (f)$ e isso mostra que $\int_{a}^{b} |f'(x)|dx \le V_a^b (f)$.
+
+Sendo assim, temos finalmente que $\int_{a}^{b} |f'(x)|dx = V_a^b (f)$ para $f \in C^1([a,b])$.
+
+
+
+
+
+
+
+
+
+
+

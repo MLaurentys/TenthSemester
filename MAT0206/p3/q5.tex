@@ -1,0 +1,71 @@
+\textbf{Q.5}
+
+\textbf{a)}
+
+\begin{align*}
+	f_+'(a) = \lim_{x\rightarrow a_+} \frac{f(x)-f(a)}{x-a} < 0
+\end{align*}
+
+Tome $x\in X\cap(a,a+\delta)$.
+
+\begin{align*}
+	f(x) - f(a) &= \frac{f(x)-f(a)}{x-a}(x-a) \\
+	&\Longrightarrow \\
+	\lim_{x\rightarrow a_+} f(x)-f(a) &= \lim_{x\rightarrow a_+} \frac{f(x)-f(a)}{x-a}(x-a) \\
+	&= \lim_{x\rightarrow a_+} \frac{f(x)-f(a)}{x-a} \cdot \lim_{x\rightarrow a_+}(x-a) \\
+	&= f_+'(a) \cdot 0\\
+	&= 0
+\end{align*}
+
+Isso mostra que a \funcao $f$ \eh \continua pela direita em $x=a$. Sendo assim, dado $\epsilon >0, \exists \delta > 0$ tal que se $x\in X \cap (a, a+ \delta)$, \entao $f(x) \in (f(a) - \epsilon, f(a) + \epsilon)$. 
+
+Como $\lim_{x\rightarrow a_+} \frac{f(x)-f(a)}{x-a} = L < 0$, tome $\epsilon = \frac{L}{2}$. Como visto acima, $\exists x_0 > a$ tal que se $x \in (a, x_0)$ tem-se que $\frac{f(x)-f(a)}{x-a} \in (L -\epsilon, L + \epsilon)$. Tomando $\delta = x_0 - a$.
+
+Tome $x \in (a, a + \delta)$ qualquer. Como $\frac{f(x)-f(a)}{x-a} \in (L -\epsilon, L + \epsilon)$, temos que  $\frac{f(x)-f(a)}{x-a} < 0$. Sendo assim e como $x > a \rightarrow x-a>0$, temos $f(x) - f(a) > 0$. 
+
+Finalmente \entao, $f(x) > f(a), \forall x \in (a, a + \delta)$.
+
+\textbf{b)}
+
+Seja $a\in X\cap X_-'$ e $f:X\rightarrow\R$ \derivavel a esquerda em $a$. Mostre que se $f_-'(a) < 0$ \entao existe $\delta > 0$ tal que se $x \in X (a-\delta, a)$ \entao $f(a) > f(x)$.
+
+\begin{align*}
+	f_-'(a) = \lim_{x\rightarrow a_-} \frac{f(x)-f(a)}{x-a} < 0
+\end{align*}
+
+Tome $x\in X\cap(a - \delta,a)$.
+
+\begin{align*}
+	f(x) - f(a) &= \frac{f(x)-f(a)}{x-a}(x-a) \\
+	&\Longrightarrow \\
+	\lim_{x\rightarrow a_-} f(x)-f(a) &= \lim_{x\rightarrow a_-} \frac{f(x)-f(a)}{x-a}(x-a) \\
+	&= \lim_{x\rightarrow a_-} \frac{f(x)-f(a)}{x-a} \cdot \lim_{x\rightarrow a_-}(x-a) \\
+	&= f_-'(a) \cdot 0\\
+	&= 0
+\end{align*}
+
+Isso mostra que a \funcao $f$ \eh \continua pela esquerda em $x=a$. Sendo assim, dado $\epsilon > 0, \exists \delta > 0$ tal que se $x\in X \cap (a - \delta, a)$, \entao $f(x) \in (f(a) - \epsilon, f(a) + \epsilon)$. 
+
+Como $\lim_{x\rightarrow a_+} \frac{f(x)-f(a)}{x-a} = L < 0$, tome $\epsilon = \frac{L}{2}$. Como visto acima, $\exists x_0 < a$ tal que se $x \in (x_0, a)$ tem-se que $\frac{f(x)-f(a)}{x-a} \in (L -\epsilon, L + \epsilon)$. Tomando $\delta = a - x_0$.
+
+Tome $x \in (a - \delta, a)$ qualquer. Como $\frac{f(x)-f(a)}{x-a} \in (L -\epsilon, L + \epsilon)$, temos que  $\frac{f(x)-f(a)}{x-a} < 0$. Sendo assim e como $x > a \rightarrow x-a>0$, temos $f(x) - f(a) > 0$. 
+
+Finalmente \entao, $f(x) > f(a), \forall x \in (a - \delta, a)$.
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
